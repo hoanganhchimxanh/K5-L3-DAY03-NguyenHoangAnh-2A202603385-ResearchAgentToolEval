@@ -1,0 +1,145 @@
+{
+  "transcript_id": "v0_openai_ui_20261110T124030739079.transcript",
+  "source": "streamlit_ui",
+  "version": "v0",
+  "artifact_version": "v0+pf0c107a9d7a1+t8db0ba629f52",
+  "prompt_hash": "f0c107a9d7a14032c948d642d7c36f2a85cb6d69a099530093a874c94d472446",
+  "tools_hash": "8db0ba629f52ad1ec171bae4e4e84472c12f950fa1a6db5e1d27bad6e749b740",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "created_at": "2026-11-10T12:40:30",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "Nguyên hàm của x^2 là gì?",
+      "status": "answered",
+      "assistant_text": "Nguyên hàm của \\(x^2\\) là \\(\\frac{x^3}{3} + C\\), trong đó \\(C\\) là hằng số tùy ý. \n\nBạn có thể tham khảo thêm thông tin chi tiết về nguyên hàm trong bài viết [tại đây](https://www.youtube.com/watch?v=-7hiB-FfZ-8).",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "Nguyên hàm của x^2",
+                "topic": "general"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "Nguyên hàm của x^2",
+                "topic": "general"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "Nguyên hàm của x^2",
+                "topic": "general",
+                "timeframe": "week",
+                "items": [
+                  {
+                    "title": "Họ nguyên hàm của hàm số f(x) = sin x + 2^x + 1/x^2 là",
+                    "url": "https://khoahoc.vietjack.com/question/2657493/ho-nguyen-ham-cua-ham-so-fx-sin-x-2x-1-x2-la",
+                    "source": "khoahoc.vietjack.com",
+                    "summary": "Tiếp tục với Google   Đăng nhập bằng email\n\nLời giải\n\nBạn cần đăng ký gói VIP ( giá chỉ từ 250K ) để làm bài, xem đáp án và lời giải chi tiết không giới hạn.\n\nNng cấp VIP\n\nXem thêm các cu hỏi khác »\n\n## Đăng ký để học cùng Vietjack. Hoàn toàn miễn phí!\n\nBằng việc đăng ký, bạn đồng ý với Điều khoản sử dụng và Chính sách bảo mật của Vietjack.\n\nTiếp tục với Google   Đăng nhập bằng email\n\n## Tạo tài khoản MIỄN PHÍ hoặc đăng nhập để tiếp tục Học [...] Lưu tiến độ và luyện tập hiệu quả hơn. Hoàn toàn miễn phí!\n\nTiếp tục với Google   Đăng nhập bằng email\n\nLời giải\n\nBạn cần đăng ký gói VIP ( giá chỉ từ 250K ) để làm bài, xem đáp án và lời giải chi tiết không giới hạn.\n\nNng cấp VIP\n\nCu 7 [...] ## Đăng nhập để xem lời giải\n\nLưu tiến độ và luyện tập hiệu quả hơn. Hoàn toàn miễn phí!\n\nTiếp tục với Google   Đăng nhập bằng email\n\nLời giải\n\nĐáp án:\n\n130\n\nĐáp án: 130\n\nGọi \\(x\\) là số sản phẩm được sản xuất trong một chu kì (\\(x \\in {\\mathbb{N}^\\}\\)).\n\nChi phí hao mòn (cần bảo dưỡng) sau khi sản xuất \\(x\\) sản phẩm là \\(C\\left( x \\right) = 20\\ln x + 50\\) (triệu đồng).",
+                    "score": 0.8302782
+                  },
+                  {
+                    "title": "NGUYÊN HÀM",
+                    "url": "https://www.youtube.com/watch?v=-7hiB-FfZ-8",
+                    "source": "youtube.com",
+                    "summary": "[0:28] Khi lấy đạo hàm, tất cả đều cho ra kết quả là 2x. Do đạo hàm của mọi hằng số c luôn bằng 0 nên biểu thức x bình c lấy\n[0:36] đạo hàm cũng bằng 2x. Vì thế nguyên hàm của 2x là cả một họ hàm số có dạng x bình cộng c với c thuộc tập số thực r.\n[0:44] Về ý nghĩa hình học, trên mặt phẳng tọa độ oxy ta xét họ nguyên hàm f(x) = 1/4x m 3 - 3/4x + c. Khi hàng số C thay đổi [...] ### Transcript\n[0:00] Chào mừng các em đến với bài học khái niệm nguyên hàm trong chương trình giải tích 12. Như các em đã biết, từ hàm số f(x) = x bình phương khi lấy đạo hàm ta\n[0:08] thu được f(x) = 2x. Ngược lại, từ 2x đi tìm lại hàm số ban đầu chính là bài toán tìm nguyên hàm. Tổng quát, nếu f'x =\n[0:16] f(x) thì nguyên hàm của f(x) dx sẽ bằng f(x) + c. Vậy tại sao ta luôn phải cộng thêm hằng số c? Hãy quan sát các hàm số x bình phương x bình + 3 và x bình - 5. [...] [0:53] tăng lên 2 rồi giảm xuống -2, đồ thị hàm số sẽ dịch chuyển tịnh tiến lên xuống dọc theo trục tung OY. Tuy nhiên, tại cùng một hoành độ x0, các tiếp tuyến màu\n[1:02] đỏ luôn song song với nhau do có trung hệ số gốc. M.",
+                    "score": 0.7371019
+                  },
+                  {
+                    "title": "[TOÁN 12] BÀI 11. NGUYÊN HÀM (PHẦN 1)",
+                    "url": "https://www.youtube.com/watch?v=hUXLHNN7ANc",
+                    "source": "youtube.com",
+                    "summary": "[30:27] Được chưa? Rồi số 2 cô để ra ngoài vậy nó sẽ còn lại là nguyên hàm của 2x + 1 tất cả tất cả bình dx\n[30:35] bằng. Rồi vậy nó có giống 1 chia x giống. Vậy nó vẫn bằng gì? Số 2 cô để lại nè, nó vẫn là bằng -1 chia cho chia\n[30:45] cho x là nó giống nguyên cái cục này luôn.\n[30:48] Nhưng mà bây giờ x của mình không còn số 1 nữa. Của a của mình không còn số 1 mà nó là số mấy phải nhân 1/2 vô cho cô. [...] [26:49] chia x cái cuối cùng 2 chia cho x bình nó giống bên kia cô để số 2 ra như vậy để cho mình dễ thấy cái công thức hơn thôi\n[26:58] được chưa rồi bằng x nguyên hàm là\n[27:04] tăng mũ lên đầu đội mũ chân bằng dép trừ số 2 nguyên hàm là x cộng nguyên hàm của\n[27:13] 1 chia x mới học là ln trị tuyệt đối của x cộng hệ số để lại nè 1 chia x bình\n[27:20] nguyên hàm là -1 chia cho x cuối cùng cộng c vậy thì mình sẽ bằng thu gọn lại thôi. [...] [3:13] chỗ này mình sẽ viết cho cô là đẩy số ra.\n[3:21] Đẩy nguyên hàm vào.\n[3:25] Được chưa? Mình phải hiểu được cái tính chất số hai. Vậy bây giờ nhìn cho cô nè.\n[3:29] Nguyên hàm cái này đọc nguyên hàm của 2x m 3 được chưa? Ở đây chữ x thì đằng sau là dx. Còn đây chữ y thì đằng sau là dy.\n[3:37] Vậy thì bây giờ cô đẩy số ra đẩy dấu nguyên hàm vô giống như chữ k vậy nè.\n[3:41] đẩy số ra, cô sẽ đẩy số 2 ra. Vậy mình sẽ còn lại là nguyên hàm của x mũ x m.",
+                    "score": 0.6999322
+                  },
+                  {
+                    "title": "Bài Nguyên hàm toán 12 phần 2",
+                    "url": "https://www.youtube.com/watch?v=6eoGcju8uO8",
+                    "source": "youtube.com",
+                    "summary": "[1:10:28] Cái x m 2 này với cái x m 2 này đơn giản rồi mà. Còn cái này là 1/x mũ 2 tất cả bình là phải ra 1/x mũ 4 chứ.\n[1:10:37] Cái này 1/x mũ 2 bình thì nó ra là 1/x mũ 4.\n[1:10:43] Chưa có nguyên. Chưa có nguyên. Vậ tới cái hàng này mới nguyên nè. Tới đây mới nguyên nè. Tới cái dấu bằng thứ tư á mới nguyên á. Nãy giờ mới biến đổi rồi chứa nguyên. Giờ mới nguyên hàm nè.\n[1:10:54] Giờ mới nguyên hàm nè. -6 nguyên hàm là ra -6 gì?\n[1:11:01] - 6x cộng x mũ 4 nguyên hàm là ra x mũ gì các em? [...] [49:07] rồi. Trừ 2 x a là nhân cho 2x nhân cho b là nhân cho 1 phần\n[49:15] 1/x cộng cho bình là 1/x tất cả bình.\n[49:24] Rồi dx viết lại nào. Vẫn là ký hiệu của nguyên hàm lại\n[49:30] nha. 2 bình lên là 4. X bình lên là X bình 2 x 2 là ra 4.\n[49:38] Các em ơi, các em ơi, các em ơi, x với x này sao? Các em hay nói một cách ngắn gọn xúc tích. Hãy rút gọn cho cô Nhi cái\n[49:48] đống này đi. Hãy rút gọn cho cô g đống này.\n[49:54] 2 x 2 là 4 X với X này mất được không? [...] [44:58] cho 1 bình là 1 dx viết lại rồi vô giờ mới bắt đầu thật sự nguyên nè\n[45:08] bây giờ mới thật sự là bắt đầu nguyên nè nhưng mà tới đây các em biết làm rồi nếu mà thật sự các em nghe giảng từ nãy tới giờ là tới đây các em sẽ biết làm số 4\n[45:16] viết lại x m 2 nguyên hàm là bằng cái gì bình luận ơi x m 2 nguyên hàm là bằng cái gì tới đây là nguyên hàm là cô đâu\n[45:23] còn cái ký hiệu con con ký hiệu chữ nữa đâu. Cô không còn ký hiệu tính tổng nữa nha. S là chữ su á.",
+                    "score": 0.6010557
+                  },
+                  {
+                    "title": "Cách tính Tích phân của hàm phân thức hữu tỉ - Phần 1 | Toán Học Việt Nam",
+                    "url": "https://www.mathvn.com/2019/12/cach-tinh-tich-phan-cua-ham-phan-thuc.html",
+                    "source": "mathvn.com",
+                    "summary": "Nhà\n Toán lớp\n  + TOÁN 12 \n    - Khảo sát hàm số\n    - Nguyên hàm Tích phn\n    - Hình không gian Oxyz\n  + TOÁN 11 \n    - Chuyên đề lượng giác\n    - Mũ và lôgarit toàn tập\n    - Hình học không gian\n  + TOÁN 10\n    - Trắc nghiệm Mệnh đề Tập hợp\n    - Trung bình, trung vị, phương sai (casio)\n    - Tính bán kính đường tròn ngoại tiếp\n  + TOÁN THCS\n    - Hằng đẳng thức đáng nhớ\n    - Ứng dụng định lí Viét\n    - Chứng minh định lí Pitago\n Đề thi Toán\n  + Đề thi giữa kì\n  + Đề thi học kì [...] thi,1,Khảo sát chất lượng,2,Khảo sát hàm số,64,Khảo sát HSG,2,Khoảng cách,1,Kí hiệu Toán học,15,Kiểm tra định kì,1,LaTex,14,Lịch m Tháng 12/2026,1,Lịch sử Toán học,78,Lịch Vạn Niên 2026,1,Linh tinh,7,Logic,10,Luận văn,1,Luyện thi Đại học,230,Luyện thi THPTQG,1,Lượng giác,77,Lương giáo viên,2,Ma trận đề thi,21,MathType,7,Mẫu số liệu,1,McMix Pro,3,Mệnh đề và Tập hợp,2,Microsoft phỏng vấn,11,MTBT Casio,29,Mũ và Logarit,45,MYTS,8,Nghịch lí Toán học,11,Ngô Bảo Chu,39,Nguyên hàm,2,Nhn vật Toán [...] - Định lí Viet bậc 2 bậc 3 bậc n\n    - Công thức chỉnh hợp, hoán vị\n    - Công thức tổ hợp\n    - Khai triển nhị thức Newton\n  + GIẢI TÍCH\n    - Công thức đạo hàm\n    - Công thức lãi kép\n    - Công thức nguyên hàm tích phn\n    - Công thức lôgarit\n    - Công thức diện tích hình elip\n    - Tính độ dài đường cong\n  + HÌNH HỌC PHẲNG\n    - Công thức tính diện tích tam giác\n    - Độ dài đường phn giác\n    - Độ dài đường trung tuyến\n    - Chu vi hình elip\n    - Bán kính đường tròn nội tiếp tam giác",
+                    "score": 0.1508904
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Nguyên hàm của \\(x^2\\) là \\(\\frac{x^3}{3} + C\\), trong đó \\(C\\) là hằng số tùy ý. \n\nBạn có thể tham khảo thêm thông tin chi tiết về nguyên hàm trong bài viết [tại đây](https://www.youtube.com/watch?v=-7hiB-FfZ-8).",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "Nguyên hàm của x^2",
+            "topic": "general"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Nguyên hàm của x^2",
+            "topic": "general",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "Họ nguyên hàm của hàm số f(x) = sin x + 2^x + 1/x^2 là",
+                "url": "https://khoahoc.vietjack.com/question/2657493/ho-nguyen-ham-cua-ham-so-fx-sin-x-2x-1-x2-la",
+                "source": "khoahoc.vietjack.com",
+                "summary": "Tiếp tục với Google   Đăng nhập bằng email\n\nLời giải\n\nBạn cần đăng ký gói VIP ( giá chỉ từ 250K ) để làm bài, xem đáp án và lời giải chi tiết không giới hạn.\n\nNng cấp VIP\n\nXem thêm các cu hỏi khác »\n\n## Đăng ký để học cùng Vietjack. Hoàn toàn miễn phí!\n\nBằng việc đăng ký, bạn đồng ý với Điều khoản sử dụng và Chính sách bảo mật của Vietjack.\n\nTiếp tục với Google   Đăng nhập bằng email\n\n## Tạo tài khoản MIỄN PHÍ hoặc đăng nhập để tiếp tục Học [...] Lưu tiến độ và luyện tập hiệu quả hơn. Hoàn toàn miễn phí!\n\nTiếp tục với Google   Đăng nhập bằng email\n\nLời giải\n\nBạn cần đăng ký gói VIP ( giá chỉ từ 250K ) để làm bài, xem đáp án và lời giải chi tiết không giới hạn.\n\nNng cấp VIP\n\nCu 7 [...] ## Đăng nhập để xem lời giải\n\nLưu tiến độ và luyện tập hiệu quả hơn. Hoàn toàn miễn phí!\n\nTiếp tục với Google   Đăng nhập bằng email\n\nLời giải\n\nĐáp án:\n\n130\n\nĐáp án: 130\n\nGọi \\(x\\) là số sản phẩm được sản xuất trong một chu kì (\\(x \\in {\\mathbb{N}^\\}\\)).\n\nChi phí hao mòn (cần bảo dưỡng) sau khi sản xuất \\(x\\) sản phẩm là \\(C\\left( x \\right) = 20\\ln x + 50\\) (triệu đồng).",
+                "score": 0.8302782
+              },
+              {
+                "title": "NGUYÊN HÀM",
+                "url": "https://www.youtube.com/watch?v=-7hiB-FfZ-8",
+                "source": "youtube.com",
+                "summary": "[0:28] Khi lấy đạo hàm, tất cả đều cho ra kết quả là 2x. Do đạo hàm của mọi hằng số c luôn bằng 0 nên biểu thức x bình c lấy\n[0:36] đạo hàm cũng bằng 2x. Vì thế nguyên hàm của 2x là cả một họ hàm số có dạng x bình cộng c với c thuộc tập số thực r.\n[0:44] Về ý nghĩa hình học, trên mặt phẳng tọa độ oxy ta xét họ nguyên hàm f(x) = 1/4x m 3 - 3/4x + c. Khi hàng số C thay đổi [...] ### Transcript\n[0:00] Chào mừng các em đến với bài học khái niệm nguyên hàm trong chương trình giải tích 12. Như các em đã biết, từ hàm số f(x) = x bình phương khi lấy đạo hàm ta\n[0:08] thu được f(x) = 2x. Ngược lại, từ 2x đi tìm lại hàm số ban đầu chính là bài toán tìm nguyên hàm. Tổng quát, nếu f'x =\n[0:16] f(x) thì nguyên hàm của f(x) dx sẽ bằng f(x) + c. Vậy tại sao ta luôn phải cộng thêm hằng số c? Hãy quan sát các hàm số x bình phương x bình + 3 và x bình - 5. [...] [0:53] tăng lên 2 rồi giảm xuống -2, đồ thị hàm số sẽ dịch chuyển tịnh tiến lên xuống dọc theo trục tung OY. Tuy nhiên, tại cùng một hoành độ x0, các tiếp tuyến màu\n[1:02] đỏ luôn song song với nhau do có trung hệ số gốc. M.",
+                "score": 0.7371019
+              },
+              {
+                "title": "[TOÁN 12] BÀI 11. NGUYÊN HÀM (PHẦN 1)",
+                "url": "https://www.youtube.com/watch?v=hUXLHNN7ANc",
+                "source": "youtube.com",
+                "summary": "[30:27] Được chưa? Rồi số 2 cô để ra ngoài vậy nó sẽ còn lại là nguyên hàm của 2x + 1 tất cả tất cả bình dx\n[30:35] bằng. Rồi vậy nó có giống 1 chia x giống. Vậy nó vẫn bằng gì? Số 2 cô để lại nè, nó vẫn là bằng -1 chia cho chia\n[30:45] cho x là nó giống nguyên cái cục này luôn.\n[30:48] Nhưng mà bây giờ x của mình không còn số 1 nữa. Của a của mình không còn số 1 mà nó là số mấy phải nhân 1/2 vô cho cô. [...] [26:49] chia x cái cuối cùng 2 chia cho x bình nó giống bên kia cô để số 2 ra như vậy để cho mình dễ thấy cái công thức hơn thôi\n[26:58] được chưa rồi bằng x nguyên hàm là\n[27:04] tăng mũ lên đầu đội mũ chân bằng dép trừ số 2 nguyên hàm là x cộng nguyên hàm của\n[27:13] 1 chia x mới học là ln trị tuyệt đối của x cộng hệ số để lại nè 1 chia x bình\n[27:20] nguyên hàm là -1 chia cho x cuối cùng cộng c vậy thì mình sẽ bằng thu gọn lại thôi. [...] [3:13] chỗ này mình sẽ viết cho cô là đẩy số ra.\n[3:21] Đẩy nguyên hàm vào.\n[3:25] Được chưa? Mình phải hiểu được cái tính chất số hai. Vậy bây giờ nhìn cho cô nè.\n[3:29] Nguyên hàm cái này đọc nguyên hàm của 2x m 3 được chưa? Ở đây chữ x thì đằng sau là dx. Còn đây chữ y thì đằng sau là dy.\n[3:37] Vậy thì bây giờ cô đẩy số ra đẩy dấu nguyên hàm vô giống như chữ k vậy nè.\n[3:41] đẩy số ra, cô sẽ đẩy số 2 ra. Vậy mình sẽ còn lại là nguyên hàm của x mũ x m.",
+                "score": 0.6999322
+              },
+              {
+                "title": "Bài Nguyên hàm toán 12 phần 2",
+                "url": "https://www.youtube.com/watch?v=6eoGcju8uO8",
+                "source": "youtube.com",
+                "summary": "[1:10:28] Cái x m 2 này với cái x m 2 này đơn giản rồi mà. Còn cái này là 1/x mũ 2 tất cả bình là phải ra 1/x mũ 4 chứ.\n[1:10:37] Cái này 1/x mũ 2 bình thì nó ra là 1/x mũ 4.\n[1:10:43] Chưa có nguyên. Chưa có nguyên. Vậ tới cái hàng này mới nguyên nè. Tới đây mới nguyên nè. Tới cái dấu bằng thứ tư á mới nguyên á. Nãy giờ mới biến đổi rồi chứa nguyên. Giờ mới nguyên hàm nè.\n[1:10:54] Giờ mới nguyên hàm nè. -6 nguyên hàm là ra -6 gì?\n[1:11:01] - 6x cộng x mũ 4 nguyên hàm là ra x mũ gì các em? [...] [49:07] rồi. Trừ 2 x a là nhân cho 2x nhân cho b là nhân cho 1 phần\n[49:15] 1/x cộng cho bình là 1/x tất cả bình.\n[49:24] Rồi dx viết lại nào. Vẫn là ký hiệu của nguyên hàm lại\n[49:30] nha. 2 bình lên là 4. X bình lên là X bình 2 x 2 là ra 4.\n[49:38] Các em ơi, các em ơi, các em ơi, x với x này sao? Các em hay nói một cách ngắn gọn xúc tích. Hãy rút gọn cho cô Nhi cái\n[49:48] đống này đi. Hãy rút gọn cho cô g đống này.\n[49:54] 2 x 2 là 4 X với X này mất được không? [...] [44:58] cho 1 bình là 1 dx viết lại rồi vô giờ mới bắt đầu thật sự nguyên nè\n[45:08] bây giờ mới thật sự là bắt đầu nguyên nè nhưng mà tới đây các em biết làm rồi nếu mà thật sự các em nghe giảng từ nãy tới giờ là tới đây các em sẽ biết làm số 4\n[45:16] viết lại x m 2 nguyên hàm là bằng cái gì bình luận ơi x m 2 nguyên hàm là bằng cái gì tới đây là nguyên hàm là cô đâu\n[45:23] còn cái ký hiệu con con ký hiệu chữ nữa đâu. Cô không còn ký hiệu tính tổng nữa nha. S là chữ su á.",
+                "score": 0.6010557
+              },
+              {
+                "title": "Cách tính Tích phân của hàm phân thức hữu tỉ - Phần 1 | Toán Học Việt Nam",
+                "url": "https://www.mathvn.com/2019/12/cach-tinh-tich-phan-cua-ham-phan-thuc.html",
+                "source": "mathvn.com",
+                "summary": "Nhà\n Toán lớp\n  + TOÁN 12 \n    - Khảo sát hàm số\n    - Nguyên hàm Tích phn\n    - Hình không gian Oxyz\n  + TOÁN 11 \n    - Chuyên đề lượng giác\n    - Mũ và lôgarit toàn tập\n    - Hình học không gian\n  + TOÁN 10\n    - Trắc nghiệm Mệnh đề Tập hợp\n    - Trung bình, trung vị, phương sai (casio)\n    - Tính bán kính đường tròn ngoại tiếp\n  + TOÁN THCS\n    - Hằng đẳng thức đáng nhớ\n    - Ứng dụng định lí Viét\n    - Chứng minh định lí Pitago\n Đề thi Toán\n  + Đề thi giữa kì\n  + Đề thi học kì [...] thi,1,Khảo sát chất lượng,2,Khảo sát hàm số,64,Khảo sát HSG,2,Khoảng cách,1,Kí hiệu Toán học,15,Kiểm tra định kì,1,LaTex,14,Lịch m Tháng 12/2026,1,Lịch sử Toán học,78,Lịch Vạn Niên 2026,1,Linh tinh,7,Logic,10,Luận văn,1,Luyện thi Đại học,230,Luyện thi THPTQG,1,Lượng giác,77,Lương giáo viên,2,Ma trận đề thi,21,MathType,7,Mẫu số liệu,1,McMix Pro,3,Mệnh đề và Tập hợp,2,Microsoft phỏng vấn,11,MTBT Casio,29,Mũ và Logarit,45,MYTS,8,Nghịch lí Toán học,11,Ngô Bảo Chu,39,Nguyên hàm,2,Nhn vật Toán [...] - Định lí Viet bậc 2 bậc 3 bậc n\n    - Công thức chỉnh hợp, hoán vị\n    - Công thức tổ hợp\n    - Khai triển nhị thức Newton\n  + GIẢI TÍCH\n    - Công thức đạo hàm\n    - Công thức lãi kép\n    - Công thức nguyên hàm tích phn\n    - Công thức lôgarit\n    - Công thức diện tích hình elip\n    - Tính độ dài đường cong\n  + HÌNH HỌC PHẲNG\n    - Công thức tính diện tích tam giác\n    - Độ dài đường phn giác\n    - Độ dài đường trung tuyến\n    - Chu vi hình elip\n    - Bán kính đường tròn nội tiếp tam giác",
+                "score": 0.1508904
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-11-10T12:41:07"
+}
