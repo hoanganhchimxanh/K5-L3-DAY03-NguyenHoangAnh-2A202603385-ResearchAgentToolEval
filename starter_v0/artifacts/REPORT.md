@@ -8,7 +8,7 @@
 
 - Team:
 - Members:
-- Provider/model:
+- Provider/model: OpenRouter / `openai/gpt-4o-mini`
 
 ---
 
@@ -16,33 +16,35 @@
 
 ## A1. Agent này làm được gì
 
-> 1–2 câu mô tả agent dùng để làm gì (cho team khác hiểu nhanh).
-
-Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc URL, tổng hợp thành digest, và gửi lên Telegram khi được xác nhận."
+Research agent hỗ trợ tìm tin và thông tin trên web, tìm bài đăng theo chủ đề hoặc tài khoản, đọc URL, tra cứu chính sách nội bộ và tìm bài báo khoa học. Agent có thể định dạng digest, kiểm tra metadata trích dẫn và chỉ gửi nội dung qua Telegram sau khi người dùng xác nhận (cần cấu hình Telegram).
 
 **Link dùng thử (deploy):**
 
-> Dán link public để team khác mở thử ngay. Cách deploy nhanh bằng Cloudflare Tunnel xem README. Nếu deploy Vercel/Streamlit Cloud thì dán link đó.
->
-> URL: 
+Chưa deploy public; hiện chạy local bằng `python chat.py --provider openrouter --version v2`.
 
 ## A2. Tool agent có
 
-> Liệt kê các tool agent đang dùng (gồm tool mới nhóm tự thêm). Mỗi tool 1 dòng: tên + làm được gì.
-
 | Tên tool | Làm được gì | Tool mới nhóm thêm? |
 |---|---|---|
-| clarify | hỏi lại người dùng khi thiếu thông tin | không |
-|  |  |  |
-|  |  |  |
+| `clarify` | Hỏi người dùng khi request thiếu thông tin thiết yếu hoặc cần xác nhận gửi. | không |
+| `timeline` | Lấy bài đăng gần đây từ một tài khoản cụ thể. | không |
+| `social_search` | Tìm bài đăng theo chủ đề hoặc từ khóa trên mạng xã hội. | không |
+| `lookup` | Tìm thông tin nền hoặc tin tức trên web theo khoảng thời gian. | không |
+| `fetch` | Đọc và trích nội dung từ URL đã biết. | không |
+| `format` | Định dạng các kết quả đã thu thập thành digest. | không |
+| `send` | Gửi nội dung qua Telegram sau khi người dùng xác nhận. | không |
+| `policy` | Tìm nội dung trong tài liệu chính sách nội bộ. | không |
+| `papers` | Tìm bài báo khoa học, bao gồm arXiv. | không |
+| `paper_text` | Lấy nội dung văn bản của bài báo đã xác định. | không |
+| `citation_audit` | Kiểm tra tiêu đề/URL và định dạng metadata trích dẫn; không xác minh độ tin cậy hay nội dung nguồn. | có |
 
 ## A3. Câu hỏi mẫu để thử
 
-> 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
-
-1.
-2.
-3.
+1. Tin AI hôm nay có gì nổi bật?
+2. Tìm các tweet phổ biến nhất về OpenAI.
+3. Tóm tắt bài viết này: `https://openai.com/`
+4. Tìm 3 bài báo khoa học về ứng dụng AI trong y tế.
+5. Kiểm tra và định dạng trích dẫn cho nguồn có tiêu đề “Research paper” và URL `https://example.com/paper`.
 
 ---
 
@@ -81,7 +83,11 @@ Use `transcripts/*.transcript.json`.
 
 | Turn | User Request | Tool Calls | Version Evidence | Outcome |
 |---|---|---|---|---|
-|  |  |  |  |  |
+| 1 | What are today's top AI news stories? | `lookup(query="AI", topic="news", timeframe="day")` | v2, OpenRouter `openai/gpt-4o-mini` | Web results returned and summarized. |
+| 2 | Summarize the 5 latest tweets for me. | `timeline(screenname="OpenAI", limit=5)` | v2, same transcript | Agent guessed an account instead of clarifying; Twitter API returned an HTTP error. |
+| 3 | For Elon Musk. | `timeline(screenname="elonmusk", limit=5)` | v2, same transcript | Agent used the supplied account; Twitter API returned HTTP 403. |
+
+Transcript: `transcripts/v2_openrouter_20261110T112611710992.transcript.json` (3 live turns). Twitter API access returned errors, so live social retrieval was not confirmed working.
 
 ## B5. Bonus Evidence
 
