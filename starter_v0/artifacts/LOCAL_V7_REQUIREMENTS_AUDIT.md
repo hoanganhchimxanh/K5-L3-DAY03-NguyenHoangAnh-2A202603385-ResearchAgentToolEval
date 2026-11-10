@@ -2,8 +2,10 @@
 
 Đối chiếu theo `../README.md`, code hiện tại, run JSON và transcript thật.
 Kết luận sau v7: các mục kỹ thuật và bằng chứng bắt buộc đã có. Routing tường minh
-và quyền RapidAPI đã được xử lý. Còn chốt đúng thông tin nhóm trong REPORT,
-giữ link demo hoạt động và loại secrets/môi trường ảo khi đóng gói.
+và quyền RapidAPI đã được xử lý. REPORT hiện đã điền nhóm HTHT, 4 thành viên,
+Phần A/B và kết quả v7 theo log thật. Cần giữ link demo hoạt động và loại
+secrets/môi trường ảo khi đóng gói. Rà soát hoàn thiện REPORT nằm trong
+`analysis/report_completion_checks.json`; audit JSON cũ được giữ làm lịch sử.
 
 ## Các mục đã đạt
 
@@ -27,7 +29,7 @@ giữ link demo hoạt động và loại secrets/môi trường ảo khi đóng
 | UI Streamlit | app.py, ui_session.py; AppTest và transcript UI thật | Đạt |
 | Link dùng thử | URL trong REPORT A1; kiểm tra lại health/home HTTP 200 | Đạt ở thời điểm rà soát |
 | Chat live qua chat.py | Transcript CLI có đúng 3 lượt: clarify, deduplicate, format | Đạt |
-| REPORT A/B | Có giới thiệu, tool, câu hỏi mẫu, version, lỗi, eval, live chat và reflection | Đã có nội dung; thông tin nhóm còn thiếu |
+| REPORT A/B | Có giới thiệu, 11 tool, câu hỏi mẫu, version v0–v7, lỗi, eval, live chat và reflection | Đã hoàn thiện theo log; ghi nhóm HTHT và 4 thành viên |
 | Nguồn nộp không chứa key thật | Quét các file text dự kiến nộp, kết quả trong analysis/final_audit_checks.json | Loại .env/runtime/venv khi đóng gói |
 
 ## Các điểm rà soát trước đã xử lý
@@ -49,11 +51,20 @@ trả items và URL thật, không có lỗi thực thi tool. Bằng chứng chi
 `analysis/v7_tool_execution.json`. Các lỗi 403 ở log v0–v6 được giữ nguyên vì
 chúng là lịch sử trước khi quyền truy cập được xử lý.
 
-## Còn chốt: thông tin nhóm
+## Thông tin nhóm và phạm vi báo cáo
 
-REPORT đã có NguyenHoangAnh / MSSV 2A202603385 và tác giả version log đúng thông tin
-được cung cấp. Dòng Team và các thành viên khác vẫn ghi chưa được cung cấp;
-cần điền đúng thông tin thực tế trước khi nộp.
+REPORT ghi 4 thành viên theo xác nhận mới nhất của người dùng: HTHT;
+Nguyễn Hoàng Anh, Võ Huy Hoàng, Nguyễn Trung Anh, Nguyễn Tuấn Hiếu
+và MSSV tương ứng.
+Tác giả version log giữ NguyenHoangAnh-2A202603385; không tự phân công cho
+thành viên khác. Provider/model được sửa đúng theo log là OpenRouter /
+openai/gpt-4o-mini.
+
+REPORT này mô tả source local v7 (11 tool, group 10 case). Bản GitHub tích hợp
+có thêm citation_audit (12 tool, group 11 case) đã được kiểm thử offline riêng;
+không dùng điểm v7 của local làm điểm eval bản tích hợp. Người dùng đã yêu cầu
+đưa REPORT hoàn chỉnh lên GitHub sau khi xác nhận danh sách 4 thành viên;
+bản REPORT cũ được giữ trong lịch sử Git.
 
 ## Các giới hạn cần giữ trong báo cáo
 

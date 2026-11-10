@@ -1,8 +1,11 @@
 # Source integration on NguyenTuanHieu_2A202603374
 
-The source update preserves `starter_v0/artifacts/REPORT.md` exactly as it was
-on the target branch, as requested. The local NguyenHoangAnh REPORT was not
-copied over it. The preserved REPORT may describe an earlier version.
+The initial source integration preserved `starter_v0/artifacts/REPORT.md` from
+the target branch. At the user's subsequent request, REPORT is now updated
+with the completed local v7 evidence and the confirmed four-member HTHT team.
+The prior REPORT remains available in commit 2ca8def and earlier history.
+The report explicitly distinguishes its local v7 evidence from this merged
+configuration; no new combined model-evaluation score is claimed.
 
 The existing `citation_audit` tool, its declaration, four tests, group eval case,
 run JSON files, transcripts and version-log entries are retained. The new
