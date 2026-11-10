@@ -1,0 +1,16 @@
+{
+  "transcript_id": "v2_openrouter_20261110T214923467403",
+  "version": "v2",
+  "artifact_version": "v2+p733f24b01f93+t023dfc375938",
+  "prompt_hash": "733f24b01f936f889a3b2e127fc3adf9bda16a453f7e509b8ce254b7df467158",
+  "tools_hash": "023dfc37593837a1f88a965a8c0d0f23db1bf29059cfe7eb9e2799b5ee14ff56",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\Hoang\\VinUni\\Labs\\K5-L3-DAY03-NguyenHoangAnh-2A202603385-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\Hoang\\VinUni\\Labs\\K5-L3-DAY03-NguyenHoangAnh-2A202603385-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T21:49:23",
+  "updated_at": "2026-11-10T21:49:23",
+  "turns": []
+}

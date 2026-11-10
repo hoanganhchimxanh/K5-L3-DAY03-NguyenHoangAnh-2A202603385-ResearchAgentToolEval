@@ -32,3 +32,8 @@ requires_confirmation: true   # only for write/action tools
 Core tools are enough to pass the base lab. Bonus tools are for teams that want
 extra scope, extra eval cases, or a live delivery action.
 
+Local file-writing tools should declare `side_effect: local_file_write`, write
+only to a documented project-owned output directory, and return a relative
+download URL rather than an arbitrary filesystem path. The local chat UI serves
+generated Markdown exports from `exports/`; it rejects paths outside that
+directory.

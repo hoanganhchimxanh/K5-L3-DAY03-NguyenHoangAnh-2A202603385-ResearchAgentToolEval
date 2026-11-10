@@ -1,0 +1,139 @@
+{
+  "transcript_id": "v3_openrouter_20261110T220648088396",
+  "version": "v3",
+  "artifact_version": "v3+p2c33e1836fe3+td19460b9f53d",
+  "prompt_hash": "2c33e1836fe3de1e599e1333685e126f89ffa723f7762c947bbacf0c5ac074f1",
+  "tools_hash": "d19460b9f53d64eaa123f5717309b01c89b814564a9ab8fc5af37a1dffa74b76",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\Hoang\\VinUni\\Labs\\K5-L3-DAY03-NguyenHoangAnh-2A202603385-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\Hoang\\VinUni\\Labs\\K5-L3-DAY03-NguyenHoangAnh-2A202603385-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T22:06:48",
+  "updated_at": "2026-11-10T22:08:34",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T22:08:22",
+      "user": "tin tức hôm nay",
+      "status": "answered",
+      "assistant_text": "Here are some of the latest news articles:\n\n1. **[Tin tức thế giới 20-9: Iran nêu điều kiện đàm phán mới với Mỹ; Ông Trump ủng hộ AI](https://tin.skydoor.net/news/the-gioi-tin-tuc-the-gioi-209-iran-neu-dieu-kien-dam-phan-moi-voi-my-8343057)**  \n   Source: tin.skydoor.net  \n   Summary: The article discusses Iran's new conditions for negotiations with the U.S. and mentions Trump's support for AI. It also highlights France's anger over Iran's alleged involvement in a cyberattack and the unexpected departure of U.S. planes from a base in the UK due to threats from Iran.\n\n2. **[Tin tức nổi bật ngày 10/11/2026 có gì?](https://htv.vn/tin-tuc-noi-bat-ngay-10-11-2026-co-gi-22226111011494945.htm)**  \n   Source: htv.vn  \n   Summary: This article covers significant news from November 10, 2026, including weather events in Da Nang and other notable occurrences.\n\n3. **[Tin tức thời tiết đêm nay và ngày mai 11/11/2026 mới nhất](https://giadinhmoi.vn/tin-tuc-thoi-tiet-dem-nay-va-ngay-mai-11-11-2026-moi-nhat-d100689.html)**  \n   Source: giadinhmoi.vn  \n   Summary: The article provides the latest weather updates for the night and the following day, along with economic news such as interest rates and commodity prices.\n\n4. **[Phản hồi việc Văn phòng Đại diện tại Lithuania bị yêu cầu đổi tên, Bộ Ngoại giao: Thành tín, tôn trọng, tương trợ, cùng có lợi](https://www.rti.org.tw/vn/news?uid=3&pid=1050667)**  \n   Source: rti.org.tw  \n   Summary: This article discusses the response from Taiwan's Ministry of Foreign Affairs regarding Lithuania's request to change the name of its representative office, emphasizing mutual respect and cooperation.\n\nFeel free to ask if you need more information on any specific topic!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "tin tức",
+                "topic": "news",
+                "timeframe": "day"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "tin tức",
+                "topic": "news",
+                "timeframe": "day"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "tin tức",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Tin tức thế giới 20-9: Iran nêu điều kiện đàm phán mới với Mỹ; Ông Trump ủng hộ AI | Sky Tin",
+                    "url": "https://tin.skydoor.net/news/the-gioi-tin-tuc-the-gioi-209-iran-neu-dieu-kien-dam-phan-moi-voi-my-8343057",
+                    "source": "tin.skydoor.net",
+                    "summary": "1 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ông Trump: Có động lực tích cực để chấm dứt chiến sự Iran\n\n1 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Pháp nổi giận, tố Iran đứng sau đòn tấn công mạng chưa từng có: Paris triệu tập Đại sứ, dọa đáp trả\n\n1 giờ trước–cafef.vncafef.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Loạt máy bay Mỹ bất ngờ rời căn cứ ở Anh vì “mối đe dọa từ Iran“\n\n2 giờ trước–24h.com.vn24h.com.vn\n\nXem tóm tắt nhanh\n\n## Tin tức Thế Giới mới nhất hôm nay [...] Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Tin tức thế giới 20-9: Iran nêu điều kiện đàm phán mới với Mỹ; Ông Trump ủng hộ AI\n\nHiệp hội Phóng viên Nhà Trắng yêu cầu ông Trump bỏ lệnh cấm một số báo đài; Pháp ghi nhận nợ công cao nhất kể từ 1978.\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Iran mới nhất hôm nay\n\n[](\n\n### Báo Mỹ: Washington di dời máy bay khỏi căn cứ không qun ở Anh vì mối đe dọa từ Iran [...] [](\n\n### Ukraine thử nghiệm vũ khí mới, tìm cách đánh chặn tên lửa Oreshnik\n\n1 giờ trước–vtcnews.vnvtcnews.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ukraine tuyên bố tấn công căn cứ lực lượng tinh nhuệ 'Rubicon' của Nga\n\n1 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Hơn 200 cảnh sát vào cuộc, phát hiện thi thể bé gái người Việt 13 tuổi mất tích ở Đức\n\n1 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Hậu bầu cử giữa kỳ, tỉ lệ ủng hộ ông Trump vẫn ở vùng đáy",
+                    "score": 0.5458305
+                  },
+                  {
+                    "title": "Tin tức nổi bật ngày 10/11/2026 có gì?",
+                    "url": "https://htv.vn/tin-tuc-noi-bat-ngay-10-11-2026-co-gi-22226111011494945.htm",
+                    "source": "htv.vn",
+                    "summary": "Bỏ qua đến nội dung chính\n\nCƠ QUAN BÁO VÀ PHÁT THANH, TRUYỀN HÌNH TP. HỒ CHÍ MINH\n\n HTV\n\nĐÀI PHÁT THANH VÀ TRUYỀN HÌNH   \nTHÀNH PHỐ HỒ CHÍ MINH\n\nTV LIVE   RADIO LIVE   GIỚI THIỆU HTV\n\nBạn hãy chọn Profile tiện dụng\n\nXu hướng\n\ngiá vàng hôm nay\n\nphim HTV\n\ngiá xăng dầu\n\ncông an tphcm\n\nKinh tế\n\ncông nghệ\n\ngiải trí\n\n# Tin tức nổi bật ngày 10/11/2026 có gì?\n\nThời sự 00:00:35.78\n\nTRẦN HÙNG, PHƯƠNG MAI, NGỌC PHẠM\n\n(HTV) - Nhiều cy xanh ở Đà Nẵng ngã đổ tối qua do mưa lớn kèm gió giật mạnh. [...] ## Danh sách tập\n\nTin tức nổi bật ngày 9/11/2026 có gì? \n\n### Tin tức nổi bật ngày 9/11/2026 có gì?\n\nTin tức nổi bật ngày 8/11/2026 có gì? \n\n### Tin tức nổi bật ngày 8/11/2026 có gì?\n\nTin tức nổi bật ngày 7/11/2026 có gì? \n\n### Tin tức nổi bật ngày 7/11/2026 có gì?\n\nTin tức nổi bật ngày 6/11/2026 có gì? \n\n### Tin tức nổi bật ngày 6/11/2026 có gì?\n\nTin tức nổi bật ngày 5/11/2026 có gì? \n\n### Tin tức nổi bật ngày 5/11/2026 có gì?\n\n## Các chương trình khác",
+                    "score": 0.51004654
+                  },
+                  {
+                    "title": "Tin tức thời tiết đêm nay và ngày mai 11/11/2026 mới nhất",
+                    "url": "https://giadinhmoi.vn/tin-tuc-thoi-tiet-dem-nay-va-ngay-mai-11-11-2026-moi-nhat-d100689.html",
+                    "source": "giadinhmoi.vn",
+                    "summary": "Lãi suất ngn hàng hôm nay 10/11/2026: Nhiều nhà băng tiếp tục giảm, mức cao nhất lên 7,4%/năm\n\nLãi suất ngn hàng hôm nay 10/11/2026: Nhiều nhà băng tiếp tục giảm, mức cao nhất lên 7,4%/năm\n\nGiá bạc hôm nay 10/11/2026: Bạc thế giới tăng lên 53,54 USD/ounce, Phú Quý bán ra 1,629 triệu đồng/lượng\n\nGiá bạc hôm nay 10/11/2026: Bạc thế giới tăng lên 53,54 USD/ounce, Phú Quý bán ra 1,629 triệu đồng/lượng\n\nGiá vàng hôm nay 10/11/2026: Vàng thế giới vượt 4.100 USD/ounce, SJC lên 141,2 triệu đồng/lượng [...] Trực tiếp bóng đá U23 Qatar vs U23 Singapore giải Giao hữu quốc tế trên VTV6 hôm nay 10/11/2026\n\nChưa hết hạn nhận bài, cuộc thi “Gửi Tương Lai Xanh 2050” mùa 3 đã nhận hơn 10.500 bài dự thi\n\nChưa hết hạn nhận bài, cuộc thi “Gửi Tương Lai Xanh 2050” mùa 3 đã nhận hơn 10.500 bài dự thi\n\nViệt Nam vượt qua cú sốc năng lượng lớn nhất trong nhiều thập kỷ\n\nViệt Nam vượt qua cú sốc năng lượng lớn nhất trong nhiều thập kỷ\n\nGỗ Minh Long và hành trình đưa tư duy thiết kế vào vật liệu nội thất [...] Gỗ Minh Long và hành trình đưa tư duy thiết kế vào vật liệu nội thất\n\nAmway Việt Nam hai năm liên tiếp nằm trong Top 100 nơi làm việc tốt nhất Đông Nam Á 2026\n\nAmway Việt Nam hai năm liên tiếp nằm trong Top 100 nơi làm việc tốt nhất Đông Nam Á 2026\n\nGiá lúa gạo hôm nay 10/11/2026: Thị trường trong nước đi ngang, gạo xuất khẩu Việt Nam giữ giá\n\nGiá lúa gạo hôm nay 10/11/2026: Thị trường trong nước đi ngang, gạo xuất khẩu Việt Nam giữ giá",
+                    "score": 0.49551025
+                  },
+                  {
+                    "title": "Phản hồi việc Văn phòng Đại diện tại Lithuania bị yêu cầu đổi tên, Bộ Ngoại giao: Thành tín, tôn trọng, tương trợ, cùng có lợi-Tin tức-Radio Taiwan International",
+                    "url": "https://www.rti.org.tw/vn/news?uid=3&pid=1050667",
+                    "source": "rti.org.tw",
+                    "summary": "Ông Trần Minh Kỳ cho biết, phía Lithuania cũng đã giải thích rằng việc nước này duy trì quan hệ với Trung Quốc không nhất thiết phải đánh đổi bằng Đài Loan. Trước những cu hỏi truy vấn của giới truyền thông, ông một lần nữa nhấn mạnh rằng không phải tất cả những thông tin do truyền thông đưa ra đều là sự thật.\n\nThúy Anh\n\nQuay về Tổng quan Về trang trước\n\nTin tức nổi ḅt trong tùn\n\nCOP31 sắp khai mạc, Bộ Môi trường khởi động diễn đàn đồng bộ để cập nhật thông tin\n\n1 [...] Hội nghị cấp cao các nhà lãnh đạo Diễn đàn Hợp tác Kinh tế chu Á - Thái Bình Dương (APEC) sẽ diễn ra trong hai ngày 18 và 19/11 tại Thm Quyến, Trung Quốc. Ngày 2/11, Bộ trưởng Ngoại giao Đài Loan Lm Giai Long (林佳龍) cho biết, phía Trung Quốc đã không trực tiếp ...\n\n 18 min\n\nVõ sĩ Taekwondo Trịnh Bác Ngung lội ngược dòng giành chiến thắng, mang về tấm HCV thứ hai cho đoàn thể thao Đài Loan tại Đại hội Thể thao Olympic Trẻ Dakar. (Ảnh: CNA) [...] Đại hội Thể thao Olympic Trẻ Dakar: Võ sĩ Taekwondo Trịnh Bác Ngung lội ngược dòng giành chiến thắng, mang về tấm HCV thứ hai cho đoàn thể thao Đài Loan\n\nTại Đại hội Thể thao Olympic Trẻ Dakar tổ chức ở Senegal (Youth Olympic Games, gọi tắt là Olympic Trẻ, diễn ra từ ngày 31/10 đến 13/11), ngôi sao taekwondo của Đài Loan Trịnh Bác Ngung đã lội ngược dòng đánh bại võ sĩ Uzbekistan Asadbek Samandarov với tỷ số 2-1 tro...\n\n 19 min\n\nMenu-Open Menu-Close",
+                    "score": 0.36523023
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some of the latest news articles:\n\n1. **[Tin tức thế giới 20-9: Iran nêu điều kiện đàm phán mới với Mỹ; Ông Trump ủng hộ AI](https://tin.skydoor.net/news/the-gioi-tin-tuc-the-gioi-209-iran-neu-dieu-kien-dam-phan-moi-voi-my-8343057)**  \n   Source: tin.skydoor.net  \n   Summary: The article discusses Iran's new conditions for negotiations with the U.S. and mentions Trump's support for AI. It also highlights France's anger over Iran's alleged involvement in a cyberattack and the unexpected departure of U.S. planes from a base in the UK due to threats from Iran.\n\n2. **[Tin tức nổi bật ngày 10/11/2026 có gì?](https://htv.vn/tin-tuc-noi-bat-ngay-10-11-2026-co-gi-22226111011494945.htm)**  \n   Source: htv.vn  \n   Summary: This article covers significant news from November 10, 2026, including weather events in Da Nang and other notable occurrences.\n\n3. **[Tin tức thời tiết đêm nay và ngày mai 11/11/2026 mới nhất](https://giadinhmoi.vn/tin-tuc-thoi-tiet-dem-nay-va-ngay-mai-11-11-2026-moi-nhat-d100689.html)**  \n   Source: giadinhmoi.vn  \n   Summary: The article provides the latest weather updates for the night and the following day, along with economic news such as interest rates and commodity prices.\n\n4. **[Phản hồi việc Văn phòng Đại diện tại Lithuania bị yêu cầu đổi tên, Bộ Ngoại giao: Thành tín, tôn trọng, tương trợ, cùng có lợi](https://www.rti.org.tw/vn/news?uid=3&pid=1050667)**  \n   Source: rti.org.tw  \n   Summary: This article discusses the response from Taiwan's Ministry of Foreign Affairs regarding Lithuania's request to change the name of its representative office, emphasizing mutual respect and cooperation.\n\nFeel free to ask if you need more information on any specific topic!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "tin tức",
+            "topic": "news",
+            "timeframe": "day"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "tin tức",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Tin tức thế giới 20-9: Iran nêu điều kiện đàm phán mới với Mỹ; Ông Trump ủng hộ AI | Sky Tin",
+                "url": "https://tin.skydoor.net/news/the-gioi-tin-tuc-the-gioi-209-iran-neu-dieu-kien-dam-phan-moi-voi-my-8343057",
+                "source": "tin.skydoor.net",
+                "summary": "1 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ông Trump: Có động lực tích cực để chấm dứt chiến sự Iran\n\n1 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Pháp nổi giận, tố Iran đứng sau đòn tấn công mạng chưa từng có: Paris triệu tập Đại sứ, dọa đáp trả\n\n1 giờ trước–cafef.vncafef.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Loạt máy bay Mỹ bất ngờ rời căn cứ ở Anh vì “mối đe dọa từ Iran“\n\n2 giờ trước–24h.com.vn24h.com.vn\n\nXem tóm tắt nhanh\n\n## Tin tức Thế Giới mới nhất hôm nay [...] Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Tin tức thế giới 20-9: Iran nêu điều kiện đàm phán mới với Mỹ; Ông Trump ủng hộ AI\n\nHiệp hội Phóng viên Nhà Trắng yêu cầu ông Trump bỏ lệnh cấm một số báo đài; Pháp ghi nhận nợ công cao nhất kể từ 1978.\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Iran mới nhất hôm nay\n\n[](\n\n### Báo Mỹ: Washington di dời máy bay khỏi căn cứ không qun ở Anh vì mối đe dọa từ Iran [...] [](\n\n### Ukraine thử nghiệm vũ khí mới, tìm cách đánh chặn tên lửa Oreshnik\n\n1 giờ trước–vtcnews.vnvtcnews.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ukraine tuyên bố tấn công căn cứ lực lượng tinh nhuệ 'Rubicon' của Nga\n\n1 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Hơn 200 cảnh sát vào cuộc, phát hiện thi thể bé gái người Việt 13 tuổi mất tích ở Đức\n\n1 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Hậu bầu cử giữa kỳ, tỉ lệ ủng hộ ông Trump vẫn ở vùng đáy",
+                "score": 0.5458305
+              },
+              {
+                "title": "Tin tức nổi bật ngày 10/11/2026 có gì?",
+                "url": "https://htv.vn/tin-tuc-noi-bat-ngay-10-11-2026-co-gi-22226111011494945.htm",
+                "source": "htv.vn",
+                "summary": "Bỏ qua đến nội dung chính\n\nCƠ QUAN BÁO VÀ PHÁT THANH, TRUYỀN HÌNH TP. HỒ CHÍ MINH\n\n HTV\n\nĐÀI PHÁT THANH VÀ TRUYỀN HÌNH   \nTHÀNH PHỐ HỒ CHÍ MINH\n\nTV LIVE   RADIO LIVE   GIỚI THIỆU HTV\n\nBạn hãy chọn Profile tiện dụng\n\nXu hướng\n\ngiá vàng hôm nay\n\nphim HTV\n\ngiá xăng dầu\n\ncông an tphcm\n\nKinh tế\n\ncông nghệ\n\ngiải trí\n\n# Tin tức nổi bật ngày 10/11/2026 có gì?\n\nThời sự 00:00:35.78\n\nTRẦN HÙNG, PHƯƠNG MAI, NGỌC PHẠM\n\n(HTV) - Nhiều cy xanh ở Đà Nẵng ngã đổ tối qua do mưa lớn kèm gió giật mạnh. [...] ## Danh sách tập\n\nTin tức nổi bật ngày 9/11/2026 có gì? \n\n### Tin tức nổi bật ngày 9/11/2026 có gì?\n\nTin tức nổi bật ngày 8/11/2026 có gì? \n\n### Tin tức nổi bật ngày 8/11/2026 có gì?\n\nTin tức nổi bật ngày 7/11/2026 có gì? \n\n### Tin tức nổi bật ngày 7/11/2026 có gì?\n\nTin tức nổi bật ngày 6/11/2026 có gì? \n\n### Tin tức nổi bật ngày 6/11/2026 có gì?\n\nTin tức nổi bật ngày 5/11/2026 có gì? \n\n### Tin tức nổi bật ngày 5/11/2026 có gì?\n\n## Các chương trình khác",
+                "score": 0.51004654
+              },
+              {
+                "title": "Tin tức thời tiết đêm nay và ngày mai 11/11/2026 mới nhất",
+                "url": "https://giadinhmoi.vn/tin-tuc-thoi-tiet-dem-nay-va-ngay-mai-11-11-2026-moi-nhat-d100689.html",
+                "source": "giadinhmoi.vn",
+                "summary": "Lãi suất ngn hàng hôm nay 10/11/2026: Nhiều nhà băng tiếp tục giảm, mức cao nhất lên 7,4%/năm\n\nLãi suất ngn hàng hôm nay 10/11/2026: Nhiều nhà băng tiếp tục giảm, mức cao nhất lên 7,4%/năm\n\nGiá bạc hôm nay 10/11/2026: Bạc thế giới tăng lên 53,54 USD/ounce, Phú Quý bán ra 1,629 triệu đồng/lượng\n\nGiá bạc hôm nay 10/11/2026: Bạc thế giới tăng lên 53,54 USD/ounce, Phú Quý bán ra 1,629 triệu đồng/lượng\n\nGiá vàng hôm nay 10/11/2026: Vàng thế giới vượt 4.100 USD/ounce, SJC lên 141,2 triệu đồng/lượng [...] Trực tiếp bóng đá U23 Qatar vs U23 Singapore giải Giao hữu quốc tế trên VTV6 hôm nay 10/11/2026\n\nChưa hết hạn nhận bài, cuộc thi “Gửi Tương Lai Xanh 2050” mùa 3 đã nhận hơn 10.500 bài dự thi\n\nChưa hết hạn nhận bài, cuộc thi “Gửi Tương Lai Xanh 2050” mùa 3 đã nhận hơn 10.500 bài dự thi\n\nViệt Nam vượt qua cú sốc năng lượng lớn nhất trong nhiều thập kỷ\n\nViệt Nam vượt qua cú sốc năng lượng lớn nhất trong nhiều thập kỷ\n\nGỗ Minh Long và hành trình đưa tư duy thiết kế vào vật liệu nội thất [...] Gỗ Minh Long và hành trình đưa tư duy thiết kế vào vật liệu nội thất\n\nAmway Việt Nam hai năm liên tiếp nằm trong Top 100 nơi làm việc tốt nhất Đông Nam Á 2026\n\nAmway Việt Nam hai năm liên tiếp nằm trong Top 100 nơi làm việc tốt nhất Đông Nam Á 2026\n\nGiá lúa gạo hôm nay 10/11/2026: Thị trường trong nước đi ngang, gạo xuất khẩu Việt Nam giữ giá\n\nGiá lúa gạo hôm nay 10/11/2026: Thị trường trong nước đi ngang, gạo xuất khẩu Việt Nam giữ giá",
+                "score": 0.49551025
+              },
+              {
+                "title": "Phản hồi việc Văn phòng Đại diện tại Lithuania bị yêu cầu đổi tên, Bộ Ngoại giao: Thành tín, tôn trọng, tương trợ, cùng có lợi-Tin tức-Radio Taiwan International",
+                "url": "https://www.rti.org.tw/vn/news?uid=3&pid=1050667",
+                "source": "rti.org.tw",
+                "summary": "Ông Trần Minh Kỳ cho biết, phía Lithuania cũng đã giải thích rằng việc nước này duy trì quan hệ với Trung Quốc không nhất thiết phải đánh đổi bằng Đài Loan. Trước những cu hỏi truy vấn của giới truyền thông, ông một lần nữa nhấn mạnh rằng không phải tất cả những thông tin do truyền thông đưa ra đều là sự thật.\n\nThúy Anh\n\nQuay về Tổng quan Về trang trước\n\nTin tức nổi ḅt trong tùn\n\nCOP31 sắp khai mạc, Bộ Môi trường khởi động diễn đàn đồng bộ để cập nhật thông tin\n\n1 [...] Hội nghị cấp cao các nhà lãnh đạo Diễn đàn Hợp tác Kinh tế chu Á - Thái Bình Dương (APEC) sẽ diễn ra trong hai ngày 18 và 19/11 tại Thm Quyến, Trung Quốc. Ngày 2/11, Bộ trưởng Ngoại giao Đài Loan Lm Giai Long (林佳龍) cho biết, phía Trung Quốc đã không trực tiếp ...\n\n 18 min\n\nVõ sĩ Taekwondo Trịnh Bác Ngung lội ngược dòng giành chiến thắng, mang về tấm HCV thứ hai cho đoàn thể thao Đài Loan tại Đại hội Thể thao Olympic Trẻ Dakar. (Ảnh: CNA) [...] Đại hội Thể thao Olympic Trẻ Dakar: Võ sĩ Taekwondo Trịnh Bác Ngung lội ngược dòng giành chiến thắng, mang về tấm HCV thứ hai cho đoàn thể thao Đài Loan\n\nTại Đại hội Thể thao Olympic Trẻ Dakar tổ chức ở Senegal (Youth Olympic Games, gọi tắt là Olympic Trẻ, diễn ra từ ngày 31/10 đến 13/11), ngôi sao taekwondo của Đài Loan Trịnh Bác Ngung đã lội ngược dòng đánh bại võ sĩ Uzbekistan Asadbek Samandarov với tỷ số 2-1 tro...\n\n 19 min\n\nMenu-Open Menu-Close",
+                "score": 0.36523023
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T22:08:34"
+    }
+  ]
+}
