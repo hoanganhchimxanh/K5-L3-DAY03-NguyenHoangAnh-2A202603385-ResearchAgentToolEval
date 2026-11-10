@@ -2,6 +2,269 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_papers_routing",
+      "phase": "B",
+      "query": "Tìm cho mình các bài báo nghiên cứu về large language models",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "large language models"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Yêu cầu tìm paper học thuật → phải dùng papers, không phải lookup."
+      }
+    },
+    {
+      "id": "G02_fetch_no_url_clarify",
+      "phase": "B",
+      "query": "Đọc bài blog này và tóm tắt cho mình",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Nói 'bài blog này' nhưng không có URL → phải hỏi lại URL, không được đoán."
+      }
+    },
+    {
+      "id": "G03_out_of_scope_translation",
+      "phase": "B",
+      "query": "Dịch câu này sang tiếng Anh: Hôm nay trời đẹp quá",
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "metadata": {
+        "what_it_tests": "Yêu cầu dịch thuật ngoài phạm vi research → không gọi tool, từ chối."
+      }
+    },
+    {
+      "id": "G04_policy_routing",
+      "phase": "B",
+      "query": "Quy định về trích dẫn nguồn khi viết bản tin là gì?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {
+              "query": "trích dẫn nguồn"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Hỏi về quy định nội bộ → phải dùng policy, không phải lookup."
+      }
+    },
+    {
+      "id": "G05_send_missing_content_clarify",
+      "phase": "B",
+      "query": "Gửi bản tin AI lên Telegram đi",
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Hành động gửi → phải xác nhận trước (yes_no), không tự gọi send."
+      }
+    },
+    {
+      "id": "GM01_multiturn_papers_then_read",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm paper về transformer architecture"
+        },
+        {
+          "role": "user",
+          "content": "Đọc nội dung paper đầu tiên với id 1706.03762"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ đọc paper đó thôi, lấy tối đa 3 trang"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "paper_text",
+            "args": {
+              "arxiv_url": "1706.03762",
+              "max_pages": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "3 turns: sau khi tìm paper, lượt cuối yêu cầu đọc nội dung paper cụ thể → paper_text với arxiv_url đúng và max_pages=3."
+      }
+    },
+    {
+      "id": "GM02_multiturn_switch_from_twitter_to_web",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet về ChatGPT"
+        },
+        {
+          "role": "user",
+          "content": "Thôi không cần Twitter nữa, tìm tin tức web về ChatGPT đi"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tin trong tuần này thôi"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "ChatGPT",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "3 turns: explicitly chuyển từ Twitter sang web news, giữ chủ đề ChatGPT, timeframe=week."
+      }
+    },
+    {
+      "id": "GM03_multiturn_clarify_then_policy",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Quy định về AI có gì?"
+        },
+        {
+          "role": "user",
+          "content": "Ý mình là quy định nội bộ công ty về AI research"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ cần 2 kết quả thôi"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {
+              "query": "AI research",
+              "policy_area": "ai_research",
+              "top_k": 2
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "3 turns: carry context quy định nội bộ, map policy_area=ai_research, top_k=2."
+      }
+    },
+    {
+      "id": "GM04_multiturn_correction_search_type",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet mới nhất về Gemini"
+        },
+        {
+          "role": "user",
+          "content": "Không, lấy tweet phổ biến nhất thôi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn về Gemini nhé"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "Gemini",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "3 turns: sửa search_type từ Latest → Top, giữ query=Gemini."
+      }
+    },
+    {
+      "id": "GM05_multiturn_carryover_url",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lấy tin tức về Meta AI"
+        },
+        {
+          "role": "user",
+          "content": "Tóm tắt bài này: https://ai.meta.com/blog/llama-3"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ đọc đúng URL đó thôi"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://ai.meta.com/blog/llama-3"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "3 turns: lượt giữa cung cấp URL cụ thể, lượt cuối xác nhận chỉ đọc URL đó → fetch đúng url."
+      }
+    }
+  ]
 }
