@@ -7,7 +7,7 @@
 ## Team
 
 - Team: HTHT
-- Members: Nguyễn Hoàng Anh (2A202603385), Dương Ngọc Tuyên (2A202603511), Võ Huy Hoàng (2A202603397), Nguyễn Trung Anh (2A202603413)
+- Members: Nguyễn Hoàng Anh (2A202603385), Dương Ngọc Tuyên (2A202603511), Võ Huy Hoàng (2A202603397), Nguyễn Trung Anh (2A202603413), Nguyễn Tuấn Hiếu (2A202603374)
 - Provider/model: openai / gpt-4o-mini
 
 ---
