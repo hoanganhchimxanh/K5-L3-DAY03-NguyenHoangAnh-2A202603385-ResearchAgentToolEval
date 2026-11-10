@@ -1,0 +1,174 @@
+{
+  "run_id": "v3_B_group_openrouter_20261110T220417379758",
+  "version": "v3",
+  "artifact_version": "v3+p2c33e1836fe3+td19460b9f53d",
+  "prompt_hash": "2c33e1836fe3de1e599e1333685e126f89ffa723f7762c947bbacf0c5ac074f1",
+  "tools_hash": "d19460b9f53d64eaa123f5717309b01c89b814564a9ab8fc5af37a1dffa74b76",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\Hoang\\VinUni\\Labs\\K5-L3-DAY03-NguyenHoangAnh-2A202603385-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\Hoang\\VinUni\\Labs\\K5-L3-DAY03-NguyenHoangAnh-2A202603385-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-11-10T22:04:17",
+  "summary": {
+    "total_cases": 2,
+    "measured_cases": 2,
+    "provider_error_cases": 0,
+    "passed_cases": 1,
+    "case_accuracy": 0.5,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 0.5,
+    "multiturn_accuracy": null,
+    "failure_counts": {
+      "wrong_tool": 1
+    },
+    "observed_mismatch_counts": {
+      "wrong_arg_value": 1
+    }
+  },
+  "results": [
+    {
+      "id": "G01_citation_audit",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "citation_audit",
+        "difficulty": "easy",
+        "what_it_tests": "Route citation metadata checking and formatting to citation_audit without treating it as source verification."
+      },
+      "input": "Kiểm tra và định dạng trích dẫn cho nguồn có tiêu đề Research paper và URL https://example.com/paper",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "citation_audit",
+            "args": {
+              "items": [
+                {
+                  "title": "Research paper",
+                  "url": "https://example.com/paper"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "citation_audit",
+            "args": {
+              "items": [
+                {
+                  "title": "Research paper",
+                  "url": "https://example.com/paper"
+                }
+              ]
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "citation_audit",
+          "args": {
+            "items": [
+              {
+                "title": "Research paper",
+                "url": "https://example.com/paper"
+              }
+            ]
+          },
+          "result": {
+            "tool": "audit_citations",
+            "valid": true,
+            "item_count": 1,
+            "citations": [
+              {
+                "title": "Research paper",
+                "url": "https://example.com/paper",
+                "source": "example.com",
+                "markdown": "[Research paper](https://example.com/paper) - example.com"
+              }
+            ],
+            "issues": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_export_markdown",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "save_markdown",
+        "difficulty": "easy",
+        "what_it_tests": "Use save_markdown only for an explicit export request and provide Markdown content and a descriptive filename."
+      },
+      "input": "Export your answer as a Markdown file named ai-research.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "save_markdown",
+            "args": {
+              "filename": "ai-research"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": true,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "save_markdown",
+            "args": {
+              "content": "# AI Research\n\n## Overview\nArtificial Intelligence (AI) is a branch of computer science that aims to create machines capable of intelligent behavior. It encompasses various subfields, including machine learning, natural language processing, robotics, and computer vision.\n\n## Key Areas of AI Research\n1. **Machine Learning**: Algorithms that allow computers to learn from and make predictions based on data.\n2. **Natural Language Processing (NLP)**: Techniques that enable machines to understand and respond to human language.\n3. **Computer Vision**: Methods that allow computers to interpret and make decisions based on visual data.\n4. **Robotics**: The design and use of robots for various applications, often incorporating AI for autonomy.\n\n## Recent Trends\n- **Deep Learning**: A subset of machine learning that uses neural networks with many layers.\n- **Explainable AI**: Research focused on making AI decisions understandable to humans.\n- **Ethics in AI**: Addressing the moral implications of AI technologies and their impact on society.\n\n## Conclusion\nAI research is rapidly evolving, with significant implications for various industries, including healthcare, finance, and transportation. Continued exploration in this field is essential for developing responsible and effective AI systems.",
+              "filename": "ai-research.md"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": "wrong_arg_value",
+        "failure_type": "wrong_tool",
+        "failures": [
+          "filename: expected 'ai-research', got 'ai-research.md'"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "save_markdown",
+          "args": {
+            "content": "# AI Research\n\n## Overview\nArtificial Intelligence (AI) is a branch of computer science that aims to create machines capable of intelligent behavior. It encompasses various subfields, including machine learning, natural language processing, robotics, and computer vision.\n\n## Key Areas of AI Research\n1. **Machine Learning**: Algorithms that allow computers to learn from and make predictions based on data.\n2. **Natural Language Processing (NLP)**: Techniques that enable machines to understand and respond to human language.\n3. **Computer Vision**: Methods that allow computers to interpret and make decisions based on visual data.\n4. **Robotics**: The design and use of robots for various applications, often incorporating AI for autonomy.\n\n## Recent Trends\n- **Deep Learning**: A subset of machine learning that uses neural networks with many layers.\n- **Explainable AI**: Research focused on making AI decisions understandable to humans.\n- **Ethics in AI**: Addressing the moral implications of AI technologies and their impact on society.\n\n## Conclusion\nAI research is rapidly evolving, with significant implications for various industries, including healthcare, finance, and transportation. Continued exploration in this field is essential for developing responsible and effective AI systems.",
+            "filename": "ai-research.md"
+          },
+          "result": {
+            "tool": "save_markdown",
+            "status": "saved",
+            "file_name": "ai-research.md",
+            "download_url": "/files/ai-research.md",
+            "character_count": 1299
+          }
+        }
+      ]
+    }
+  ]
+}

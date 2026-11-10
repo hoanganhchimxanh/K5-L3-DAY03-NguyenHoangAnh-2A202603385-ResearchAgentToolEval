@@ -200,3 +200,18 @@ tools:
               url: {type: string}
               source: {type: string}
       required: [items]
+
+  - name: save_markdown
+    description: >
+      Save an answer or document as a downloadable Markdown file in the local
+      exports folder without overwriting existing files.
+      Use ONLY when the user explicitly asks to export or download the answer
+      as a .md/Markdown file. Save the complete final answer content, not a
+      placeholder or summary. Do NOT use for ordinary chat replies or save
+      automatically when the user did not ask for a file.
+    parameters:
+      type: object
+      properties:
+        content: {type: string, description: "The complete answer/document in Markdown, ready to download."}
+        filename: {type: string, default: "research-answer", description: "Short descriptive filename; extension is optional. Unsafe characters and paths are removed automatically."}
+      required: [content]

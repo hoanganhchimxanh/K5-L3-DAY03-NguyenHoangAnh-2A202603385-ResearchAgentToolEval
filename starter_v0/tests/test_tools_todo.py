@@ -15,6 +15,7 @@ from tools import TOOL_FUNCTIONS
 
 clarify_tool = TOOL_FUNCTIONS["clarify"]
 citation_audit = TOOL_FUNCTIONS["citation_audit"]
+save_markdown_tool = TOOL_FUNCTIONS["save_markdown"]
 fetch_tool = TOOL_FUNCTIONS["fetch"]
 format_tool = TOOL_FUNCTIONS["format"]
 lookup_tool = TOOL_FUNCTIONS["lookup"]
@@ -230,3 +231,43 @@ def test_citation_audit_reports_incomplete_citation_without_formatting_it() -> N
     assert result["valid"] is False
     assert result["citations"] == []
     assert result["issues"] == [{"index": 0, "missing_or_invalid": ["url"]}]
+
+
+# ---------------- save_markdown ----------------
+
+def test_save_markdown_writes_utf8_content_and_returns_download_link(tmp_path, monkeypatch) -> None:
+    from tools.save_markdown import tool as save_markdown_module
+
+    monkeypatch.setattr(save_markdown_module, "EXPORT_DIR", tmp_path)
+    content = "# Kết quả nghiên cứu\n\nCó dẫn nguồn."
+
+    result = save_markdown_tool(content=content, filename="Kết quả nghiên cứu.md")
+
+    assert result["status"] == "saved"
+    assert result["file_name"] == "ket-qua-nghien-cuu.md"
+    assert result["download_url"] == "/files/ket-qua-nghien-cuu.md"
+    assert (tmp_path / result["file_name"]).read_text(encoding="utf-8") == content
+
+
+def test_save_markdown_does_not_overwrite_existing_file(tmp_path, monkeypatch) -> None:
+    from tools.save_markdown import tool as save_markdown_module
+
+    monkeypatch.setattr(save_markdown_module, "EXPORT_DIR", tmp_path)
+    (tmp_path / "answer.md").write_text("Original", encoding="utf-8")
+
+    result = save_markdown_tool(content="Updated", filename="../../answer.md")
+
+    assert result["file_name"] == "answer-2.md"
+    assert (tmp_path / "answer.md").read_text(encoding="utf-8") == "Original"
+    assert (tmp_path / "answer-2.md").read_text(encoding="utf-8") == "Updated"
+
+
+def test_save_markdown_rejects_empty_content_without_creating_file(tmp_path, monkeypatch) -> None:
+    from tools.save_markdown import tool as save_markdown_module
+
+    monkeypatch.setattr(save_markdown_module, "EXPORT_DIR", tmp_path)
+
+    result = save_markdown_tool(content="  ", filename="empty")
+
+    assert result["error"] == "ValueError"
+    assert list(tmp_path.iterdir()) == []

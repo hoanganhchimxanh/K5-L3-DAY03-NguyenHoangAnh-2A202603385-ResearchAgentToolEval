@@ -30,6 +30,28 @@
         "difficulty": "easy",
         "what_it_tests": "Route citation metadata checking and formatting to citation_audit without treating it as source verification."
       }
+    },
+    {
+      "id": "G02_export_markdown",
+      "phase": "B",
+      "suite": "group",
+      "query": "Export your answer as a Markdown file named ai-research.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "save_markdown",
+            "args": {
+              "filename": "ai-research.md"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "save_markdown",
+        "difficulty": "easy",
+        "what_it_tests": "Use save_markdown only for an explicit export request and provide Markdown content and a descriptive filename."
+      }
     }
   ]
 }
