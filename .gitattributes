@@ -1,0 +1,3 @@
+# Keep prompt/tool snapshot bytes stable for recorded SHA256 evidence.
+starter_v0/artifacts/system_prompt*.md -text
+starter_v0/artifacts/tools*.yaml -text

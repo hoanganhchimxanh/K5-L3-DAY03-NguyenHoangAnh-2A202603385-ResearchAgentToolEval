@@ -1,0 +1,17 @@
+{
+  "version": "v7-integration",
+  "tools_declared": 12,
+  "tools_registered": 12,
+  "group_cases": 11,
+  "group_single_turn": 6,
+  "group_multi_turn": 5,
+  "version_log_rows": 17,
+  "citation_tests_preserved": 4,
+  "offline_test_result": "115 passed in 1.47s; 0 failed; 0 skipped",
+  "model_eval_for_merged_configuration": "not run",
+  "report_preserved_from_commit": "3a993e27506ccab3e467eb2950f3400b3656ac31",
+  "report_blob": "dfc5d8d6b1bfa85da3697bf30de3468bb52f0ecc",
+  "report_worktree_sha256": "281b29749bc3b96c6d62aadbb0a21a3ff4162a0f6ad6415a10c61546f28dc9d5",
+  "historical_local_v7_audit": "analysis/local_v7_audit_checks.json",
+  "notes": "../../INTEGRATION_NOTES.md"
+}

@@ -2,8 +2,272 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
   "cases": [
+    {
+      "id": "G01_deduplicate_provided_items",
+      "phase": "B",
+      "query": "Loại các tin trùng URL trong danh sách sau, giữ tin xuất hiện đầu tiên. Chỉ loại trùng, chưa định dạng bản tin: [{\"title\":\"Tin A\",\"url\":\"https://example.com/a\"},{\"title\":\"Tin A ban sao\",\"url\":\"https://example.com/a\"},{\"title\":\"Tin B\",\"url\":\"https://example.com/b\"}]",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "deduplicate",
+            "args": {
+              "items": [
+                {
+                  "title": "Tin A",
+                  "url": "https://example.com/a"
+                },
+                {
+                  "title": "Tin A ban sao",
+                  "url": "https://example.com/a"
+                },
+                {
+                  "title": "Tin B",
+                  "url": "https://example.com/b"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Route tới tool mới và truyền nguyên danh sách có tin trùng để tool thực thi, không tự loại trước."
+      }
+    },
+    {
+      "id": "G02_missing_items_for_deduplicate",
+      "phase": "B",
+      "query": "Loại tin trùng URL giúp mình. Mình chưa gửi danh sách tin.",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Không tự tạo items hoặc gọi deduplicate với list rỗng khi chưa có dữ liệu."
+      }
+    },
+    {
+      "id": "G03_explicit_handle_and_limit",
+      "phase": "B",
+      "query": "Lấy 3 tweet mới nhất của @sama.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sama",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Bỏ @ khỏi handle và giữ đúng số lượng người dùng yêu cầu."
+      }
+    },
+    {
+      "id": "G04_read_known_url_without_confirmation",
+      "phase": "B",
+      "query": "Đọc nội dung trang https://www.python.org/about/ . Chỉ đọc, không đăng hoặc gửi đi đâu.",
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://www.python.org/about/"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Không áp dụng quy tắc xác nhận xuất bản cho hành động chỉ đọc URL đã có."
+      }
+    },
+    {
+      "id": "G05_capability_answer_without_tools",
+      "phase": "B",
+      "query": "Bạn có thể hỗ trợ nghiên cứu và xử lý bản tin như thế nào?",
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true,
+        "behavior": "answer_without_tool"
+      },
+      "metadata": {
+        "what_it_tests": "Giới thiệu khả năng trực tiếp; không gọi tìm kiếm, định dạng hoặc gửi tin."
+      }
+    },
+    {
+      "id": "G06_deduplicate_items_from_history",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Mình có danh sách: [{\"title\":\"Nguon 1\",\"url\":\"https://example.com/x\"},{\"title\":\"Nguon 2\",\"url\":\"https://example.com/x\"}]"
+        },
+        {
+          "role": "user",
+          "content": "Loại các tin trùng URL trong danh sách vừa gửi, giữ tin đầu tiên. Chỉ loại trùng, chưa định dạng."
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "deduplicate",
+            "args": {
+              "items": [
+                {
+                  "title": "Nguon 1",
+                  "url": "https://example.com/x"
+                },
+                {
+                  "title": "Nguon 2",
+                  "url": "https://example.com/x"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Dùng items đã có trong lịch sử thay vì hỏi lại hoặc tự loại trước khi gọi tool mới."
+      }
+    },
+    {
+      "id": "G07_latest_limit_overrides_previous",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lấy 7 tweet mới nhất của @sama."
+        },
+        {
+          "role": "user",
+          "content": "Đổi thành 2 tweet, vẫn cùng tài khoản nhé."
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sama",
+              "limit": 2
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Giữ tài khoản và dùng số lượng mới nhất thay cho 7 ở lượt trước."
+      }
+    },
+    {
+      "id": "G08_followup_web_news_timeframe",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tin AI hôm nay trên web."
+        },
+        {
+          "role": "user",
+          "content": "Chuyển chủ đề sang robotics, vẫn chỉ tìm tin hôm nay trên web."
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "robotics",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Đổi query, giữ topic và timeframe; không chuyển sang social_search."
+      }
+    },
+    {
+      "id": "G09_url_supplied_after_missing_request",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Đọc bài viết đó giúp mình."
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn gửi URL bài viết nhé."
+        },
+        {
+          "role": "user",
+          "content": "Đây là link: https://www.python.org/doc/"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://www.python.org/doc/"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Khi đã bổ sung URL thì đọc ngay, không tiếp tục hỏi lại."
+      }
+    },
+    {
+      "id": "G10_declined_publication_does_not_send",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Mình muốn đăng bản tin: AI research update."
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn xác nhận đăng bản tin này lên Telegram chứ?"
+        },
+        {
+          "role": "user",
+          "content": "Không, hủy đăng. Chỉ xác nhận đã hủy cho mình."
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "no_tool": true,
+        "behavior": "answer_without_tool"
+      },
+      "metadata": {
+        "what_it_tests": "Tôn trọng việc từ chối xác nhận và không gọi send hay tool thừa."
+      }
+    },
     {
       "id": "G01_citation_audit",
       "phase": "B",

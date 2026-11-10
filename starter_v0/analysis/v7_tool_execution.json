@@ -1,0 +1,87 @@
+{
+  "version": "v7",
+  "artifact_version": "v7+p4b3e9de86e64+t4870fd9a37ff",
+  "tool_errors": [],
+  "twitter_calls": [
+    {
+      "suite": "base",
+      "case_id": "R01_user_tweets_routing",
+      "tool": "timeline",
+      "item_count": 1,
+      "items_with_urls": 1,
+      "error": null
+    },
+    {
+      "suite": "base",
+      "case_id": "R02_search_tweets_routing",
+      "tool": "social_search",
+      "item_count": 5,
+      "items_with_urls": 5,
+      "error": null
+    },
+    {
+      "suite": "base",
+      "case_id": "R05_limit_arg",
+      "tool": "timeline",
+      "item_count": 10,
+      "items_with_urls": 10,
+      "error": null
+    },
+    {
+      "suite": "base",
+      "case_id": "R07_search_type_arg",
+      "tool": "social_search",
+      "item_count": 5,
+      "items_with_urls": 5,
+      "error": null
+    },
+    {
+      "suite": "base",
+      "case_id": "R13_parallel_web_and_tweets",
+      "tool": "social_search",
+      "item_count": 5,
+      "items_with_urls": 5,
+      "error": null
+    },
+    {
+      "suite": "base",
+      "case_id": "M01_clarify_then_fill",
+      "tool": "timeline",
+      "item_count": 5,
+      "items_with_urls": 5,
+      "error": null
+    },
+    {
+      "suite": "base",
+      "case_id": "M03_correction_handle",
+      "tool": "timeline",
+      "item_count": 3,
+      "items_with_urls": 3,
+      "error": null
+    },
+    {
+      "suite": "base",
+      "case_id": "M05_correction_limit",
+      "tool": "timeline",
+      "item_count": 3,
+      "items_with_urls": 3,
+      "error": null
+    },
+    {
+      "suite": "group",
+      "case_id": "G03_explicit_handle_and_limit",
+      "tool": "timeline",
+      "item_count": 3,
+      "items_with_urls": 3,
+      "error": null
+    },
+    {
+      "suite": "group",
+      "case_id": "G07_latest_limit_overrides_previous",
+      "tool": "timeline",
+      "item_count": 2,
+      "items_with_urls": 2,
+      "error": null
+    }
+  ]
+}

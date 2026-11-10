@@ -101,6 +101,10 @@ def normalize_value(value: Any) -> Any:
     if isinstance(value, str):
         return value.strip().lower()
     if isinstance(value, list):
+        # Lists of research items are ordered data: changing the order can
+        # change which duplicate is kept. Dicts also cannot be sorted.
+        if any(isinstance(item, (dict, list)) for item in value):
+            return value
         return sorted(normalize_value(item) for item in value)
     return value
 

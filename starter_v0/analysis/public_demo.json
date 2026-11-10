@@ -1,0 +1,15 @@
+{
+    "url":  "https://kelkoo-hospitals-hybrid-packets.trycloudflare.com",
+    "kind":  "cloudflare_quick_tunnel",
+    "origin":  "http://127.0.0.1:8501",
+    "cloudflared_version":  "2026.10.7",
+    "binary_sha256":  "2493dbc168923bb3e59e5e7716f71deced92992eea9acd6e9d74f84ac7751343",
+    "checked_at_utc":  "2026-11-10T13:17:43.9441327+00:00",
+    "homepage_http_status":  200,
+    "health_http_status":  200,
+    "websocket_handshake":  "passed",
+    "websocket_subprotocol":  "streamlit",
+    "provider_requests_during_verification":  0,
+    "browser_visual_verification":  "not available",
+    "lifetime":  "Temporary URL; requires the local Streamlit server and cloudflared process to stay running."
+}

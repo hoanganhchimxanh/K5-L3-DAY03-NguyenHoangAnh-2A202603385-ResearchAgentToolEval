@@ -1,0 +1,72 @@
+{
+    "tools_declared":  11,
+    "tools_registered":  11,
+    "new_tool":  "deduplicate",
+    "new_tool_test_functions":  8,
+    "group_cases":  10,
+    "group_single_turn":  5,
+    "group_multi_turn":  5,
+    "base_case_inputs_expectations_metadata_match_v0":  true,
+    "version_log_rows":  12,
+    "version_log_errors":  [
+
+                           ],
+    "current_artifacts_match_v6_run":  true,
+    "live_transcripts":  [
+                             {
+                                 "file":  "v6_openrouter_20261110T121632957739.transcript.json",
+                                 "origin":  "cli",
+                                 "turns":  3,
+                                 "statuses":  [
+                                                  "waiting_for_user",
+                                                  "answered",
+                                                  "answered"
+                                              ]
+                             },
+                             {
+                                 "file":  "v6_openrouter_ui_20261110T121235287635_3e39cb8e.transcript.json",
+                                 "origin":  "streamlit",
+                                 "turns":  3,
+                                 "statuses":  [
+                                                  "waiting_for_user",
+                                                  "answered",
+                                                  "answered"
+                                              ]
+                             },
+                             {
+                                 "file":  "v6_openrouter_ui_20261110T121408986247_f1dea6b1.transcript.json",
+                                 "origin":  "streamlit",
+                                 "turns":  1,
+                                 "statuses":  [
+                                                  "answered"
+                                              ]
+                             }
+                         ],
+    "publishable_text_files_scanned":  105,
+    "configured_secret_value_matches_in_publishable_files":  [
+
+                                                             ],
+    "excluded_from_secret_scan":  [
+                                      ".env files except .env.example",
+                                      ".venv",
+                                      ".runtime",
+                                      ".pytest_cache",
+                                      "__pycache__",
+                                      "arxiv_papers",
+                                      ".git"
+                                  ],
+    "pytest_evidence":  "analysis/final_audit_pytest.txt",
+    "remaining_required_items":  [
+                                     "Explicit routing rules in system_prompt.md",
+                                     "RapidAPI Twitter45 subscription/access",
+                                     "Group details in REPORT"
+                                 ],
+    "known_model_failure":  "M06_switch_tool in v6 base",
+    "checked_at_utc":  "2026-11-10T13:28:31.5409754+00:00",
+    "fresh_timeline_http_status":  403,
+    "fresh_timeline_provider_reason":  "You are not subscribed to this API.",
+    "current_public_url":  "https://kelkoo-hospitals-hybrid-packets.trycloudflare.com",
+    "public_health_http_status":  200,
+    "public_homepage_http_status":  200,
+    "latest_pytest_result":  "106 passed in 1.44s; 0 failed; 0 skipped"
+}

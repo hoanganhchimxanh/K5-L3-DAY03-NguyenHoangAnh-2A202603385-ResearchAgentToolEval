@@ -1,0 +1,66 @@
+{
+  "checked_at_utc": "2026-11-10T13:55:36.633758+00:00",
+  "version": "v7",
+  "artifact_version": "v7+p4b3e9de86e64+t4870fd9a37ff",
+  "tools_declared": 11,
+  "tools_registered": 11,
+  "new_tool": "deduplicate",
+  "new_tool_test_functions": 8,
+  "group_cases": 10,
+  "group_single_turn": 5,
+  "group_multi_turn": 5,
+  "base_case_inputs_expectations_metadata_match_v0": true,
+  "version_log_rows": 14,
+  "version_log_errors": [],
+  "current_artifacts_match_v7_run_and_snapshot": true,
+  "base_passed": 20,
+  "base_total": 20,
+  "group_passed": 10,
+  "group_total": 10,
+  "routing_in_system_prompt": true,
+  "twitter_tool_calls_with_items_and_urls": 10,
+  "tool_errors_in_v7_runs": [],
+  "live_transcripts": [
+    {
+      "file": "v6_openrouter_20261110T121632957739.transcript.json",
+      "version": "v6",
+      "origin": "cli",
+      "turns": 3
+    },
+    {
+      "file": "v6_openrouter_ui_20261110T121235287635_3e39cb8e.transcript.json",
+      "version": "v6",
+      "origin": "streamlit",
+      "turns": 3
+    },
+    {
+      "file": "v6_openrouter_ui_20261110T121408986247_f1dea6b1.transcript.json",
+      "version": "v6",
+      "origin": "streamlit",
+      "turns": 1
+    }
+  ],
+  "live_evidence_versions_are_preserved": true,
+  "publishable_text_files_scanned": 114,
+  "configured_secret_value_matches_in_publishable_files": [],
+  "excluded_from_secret_scan": [
+    ".env files except .env.example",
+    ".venv",
+    ".runtime",
+    ".pytest_cache",
+    "__pycache__",
+    "arxiv_papers",
+    ".git"
+  ],
+  "pytest_evidence": "analysis/pytest_v7.txt",
+  "latest_pytest_result": "106 passed in 12.26s; 0 failed; 0 skipped",
+  "remaining_required_items": [
+    "Group details in REPORT"
+  ],
+  "submission_reminders": [
+    "Exclude .env, API keys, virtual environments, runtime files and caches.",
+    "Keep the temporary demo tunnel/UI running while visitors need the URL."
+  ],
+  "current_public_url": "https://kelkoo-hospitals-hybrid-packets.trycloudflare.com",
+  "public_health_http_status": 200
+}

@@ -1,0 +1,18 @@
+Command (from starter_v0):
+..\..\.venv\Scripts\python.exe -m pytest -q
+
+Observed output:
+........................................................................ [ 72%]
+............................                                             [100%]
+100 passed in 0.90s
+
+No failed or skipped tests. All HTTP calls in the tests are mocked.
+This does not establish live provider/API success.
+
+Regression before the run_eval.py fix:
+..\..\.venv\Scripts\python.exe -m pytest tests/test_eval_arguments.py -q
+2 failed in 0.35s
+TypeError: '<' not supported between instances of 'dict' and 'dict'
+
+The two tests now pass as part of the full suite above. Lists of item
+objects are compared in order instead of attempting to sort dictionaries.

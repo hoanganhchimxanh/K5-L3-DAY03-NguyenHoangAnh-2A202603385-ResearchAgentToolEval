@@ -1,0 +1,15 @@
+Local Streamlit server verification:
+Command: python -m streamlit run app.py --server.headless=true --server.address=127.0.0.1 --server.port=8501
+
+GET http://127.0.0.1:8501/_stcore/health -> 200 ok
+GET http://127.0.0.1:8501/ -> 200
+python -m pip check -> No broken requirements found.
+
+Interaction verification: tests/test_streamlit_app.py uses AppTest with a
+fake provider and temporary transcript directory. Full suite: 106 passed
+in 3.10s (analysis/pytest_ui.txt). No live provider call was made for this QA.
+
+No browser automation was available; visual layout was not inspected in
+a real browser. No public tunnel or deployment was created.
+The temporary verification server is stopped after QA; start the UI with
+python -m streamlit run app.py to use it.
