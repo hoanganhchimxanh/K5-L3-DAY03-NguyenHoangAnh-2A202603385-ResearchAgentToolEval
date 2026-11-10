@@ -5,6 +5,7 @@ Reuses the multi-round tool loop from chat.py and logs each session to transcrip
 """
 from __future__ import annotations
 
+import json
 import os
 from datetime import datetime
 from pathlib import Path
@@ -52,7 +53,53 @@ if "history" not in st.session_state:
         "turns": [],
     }
 
+SUITES = ["base", "group", "extension"]
+
+
+def render_report() -> None:
+    """Version progress built from runs/*.json, plus the changelog (or REPORT.md if absent)."""
+    import pandas as pd
+
+    rows = []
+    for path in sorted((ROOT / "runs").glob("*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        summary = data.get("summary", {})
+        if not summary.get("measured_cases"):
+            continue  # skip runs that failed entirely (e.g. missing API key)
+        rows.append({
+            "version": data["version"], "suite": data["suite"], "generated_at": data.get("generated_at"),
+            "case_accuracy": summary.get("case_accuracy"), "tool_routing": summary.get("tool_routing_accuracy"),
+            "argument": summary.get("argument_accuracy"), "multiturn": summary.get("multiturn_accuracy"),
+            "failed": ", ".join(r["id"] for r in data["results"] if not r["result"]["passed"]) or "—",
+            "run_file": path.name,
+        })
+    st.title("Báo cáo tối ưu prompt / tools")
+    if not rows:
+        st.info("Chưa có run nào trong runs/.")
+        return
+    df = pd.DataFrame(rows).sort_values("generated_at")
+    latest = df.groupby(["version", "suite"], as_index=False).last()  # latest run per version × suite
+    pivot = latest.pivot(index="version", columns="suite", values="case_accuracy").reindex(columns=SUITES).astype(float)
+    pivot = pivot.reindex(sorted(pivot.index, key=lambda v: (len(v), v)))
+
+    st.subheader("case_accuracy theo version")
+    st.line_chart(pivot, y_label="case_accuracy", x_label="version")
+    st.dataframe(pivot.style.format("{:.2f}", na_rep="—"), use_container_width=True)
+
+    suite = st.selectbox("Chi tiết bộ eval", SUITES)
+    detail = latest[latest["suite"] == suite].drop(columns=["suite", "generated_at"])
+    detail = detail.set_index("version").reindex(pivot.index).dropna(how="all")
+    st.dataframe(detail, use_container_width=True)
+
+    notes = ROOT / "CHANGELOG_LOCAL.md"
+    source = notes if notes.exists() else ARTIFACTS_DIR / "REPORT.md"
+    st.divider()
+    st.caption(f"Nguồn: `{source.relative_to(ROOT)}`")
+    st.markdown(source.read_text(encoding="utf-8"))
+
+
 with st.sidebar:
+    page = st.radio("Trang", ["💬 Chat", "📊 Báo cáo"], horizontal=True, label_visibility="collapsed")
     st.header("🔎 Research Agent")
     st.caption(f"`{artifact_version.artifact_version}` · {PROVIDER}")
     st.markdown("**Tools:** " + ", ".join(f"`{name}`" for name in tool_names))
@@ -67,6 +114,10 @@ with st.sidebar:
     if st.button("Cuộc hội thoại mới"):
         st.session_state.clear()
         st.rerun()
+
+if page == "📊 Báo cáo":
+    render_report()
+    st.stop()
 
 st.title("Research Agent")
 

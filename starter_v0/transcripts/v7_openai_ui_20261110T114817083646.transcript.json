@@ -1,0 +1,29 @@
+{
+  "transcript_id": "v7_openai_ui_20261110T114817083646.transcript",
+  "source": "streamlit_ui",
+  "version": "v7",
+  "artifact_version": "v7+pf7b92009b3ed+t1d5f3e291bc6",
+  "prompt_hash": "f7b92009b3ed2c5af4c6aa150c3e30e669a1a58123543ba6291a444dcc361c86",
+  "tools_hash": "1d5f3e291bc64dd6b274bc3dcdf823f352f9dfe6d0870fe99c7e27226cab54b6",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "created_at": "2026-11-10T11:48:17",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "1/0 = ?",
+      "status": "answered",
+      "assistant_text": "Câu hỏi này nằm ngoài phạm vi hỗ trợ của tôi. Tôi có thể giúp bạn tìm kiếm thông tin, tin tức hoặc nghiên cứu. Nếu bạn có câu hỏi nào khác, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Câu hỏi này nằm ngoài phạm vi hỗ trợ của tôi. Tôi có thể giúp bạn tìm kiếm thông tin, tin tức hoặc nghiên cứu. Nếu bạn có câu hỏi nào khác, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": []
+    }
+  ],
+  "updated_at": "2026-11-10T11:54:26"
+}

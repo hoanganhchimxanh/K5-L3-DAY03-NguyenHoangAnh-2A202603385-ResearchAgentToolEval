@@ -1,0 +1,122 @@
+{
+  "transcript_id": "v7_openai_ui_20261110T115439846230.transcript",
+  "source": "streamlit_ui",
+  "version": "v7",
+  "artifact_version": "v7+pf7b92009b3ed+t1d5f3e291bc6",
+  "prompt_hash": "f7b92009b3ed2c5af4c6aa150c3e30e669a1a58123543ba6291a444dcc361c86",
+  "tools_hash": "1d5f3e291bc64dd6b274bc3dcdf823f352f9dfe6d0870fe99c7e27226cab54b6",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "created_at": "2026-11-10T11:54:39",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "link facebook của sơn tùng mtp",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn có thể cung cấp tên tài khoản Facebook của Sơn Tùng M-TP không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Bạn có thể cung cấp tên tài khoản Facebook của Sơn Tùng M-TP không?",
+                "response_type": "text"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Bạn có thể cung cấp tên tài khoản Facebook của Sơn Tùng M-TP không?",
+                "response_type": "text"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn có thể cung cấp tên tài khoản Facebook của Sơn Tùng M-TP không?",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn có thể cung cấp tên tài khoản Facebook của Sơn Tùng M-TP không?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có thể cung cấp tên tài khoản Facebook của Sơn Tùng M-TP không?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "turn_index": 2,
+      "user": "bài twitẻ mới nhất",
+      "status": "answered",
+      "assistant_text": "Hiện tại, Sơn Tùng M-TP không có bài tweet nào mới trên tài khoản Twitter của mình. Nếu bạn cần thông tin khác, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "screenname": "sontungmtp",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "timeline",
+              "args": {
+                "screenname": "sontungmtp",
+                "limit": 5
+              },
+              "result": {
+                "tool": "get_user_tweets",
+                "screenname": "sontungmtp",
+                "items": []
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Hiện tại, Sơn Tùng M-TP không có bài tweet nào mới trên tài khoản Twitter của mình. Nếu bạn cần thông tin khác, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "sontungmtp",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "sontungmtp",
+            "items": []
+          }
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-11-10T12:02:19"
+}

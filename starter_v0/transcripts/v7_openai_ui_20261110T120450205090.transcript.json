@@ -1,0 +1,148 @@
+{
+  "transcript_id": "v7_openai_ui_20261110T120450205090.transcript",
+  "source": "streamlit_ui",
+  "version": "v7",
+  "artifact_version": "v7+pf7b92009b3ed+t1d5f3e291bc6",
+  "prompt_hash": "f7b92009b3ed2c5af4c6aa150c3e30e669a1a58123543ba6291a444dcc361c86",
+  "tools_hash": "1d5f3e291bc64dd6b274bc3dcdf823f352f9dfe6d0870fe99c7e27226cab54b6",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "created_at": "2026-11-10T12:04:50",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "thoi tiet hom nay (dung tra loi)",
+      "status": "answered",
+      "assistant_text": "Dưới đây là dự báo thời tiết hôm nay:\n\n1. **Thời tiết chung**: Cả nước có mưa dông chiếm ưu thế, chỉ một số nơi có thời tiết ổn định với nắng. Trong mưa dông có khả năng xảy ra lốc, sét, mưa đá và gió giật mạnh. (Nguồn: [Tuổi Trẻ Online](https://tuoitre.vn/thoi-tiet.htm))\n\n2. **Hà Nội**: Mưa nhẹ, nhiệt độ khoảng 29.7°C, cảm giác như 34.1°C. (Nguồn: [Thời tiết](https://thoitiet.vn/hom-nay))\n\n3. **Miền Bắc**: Dự báo sẽ đón hai đợt không khí lạnh liên tiếp từ đêm 5-11 đến cuối tuần này, có khả năng mưa rào và dông rải rác. (Nguồn: [Tuổi Trẻ Online](https://tuoitre.vn/thoi-tiet.htm))\n\n4. **Miền Nam**: Nắng nóng đầu tuần, nhiệt độ có thể vượt 35 độ, nhưng giữa tuần sẽ có mưa giông gia tăng. (Nguồn: [Vietnamnet](https://vietnamnet.vn/du-bao-thoi-tiet-10-11-2026-khong-khi-lanh-manh-mien-bac-ret-2572328.html))\n\nNếu bạn cần thêm thông tin chi tiết về một khu vực cụ thể, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "thời tiết",
+                "topic": "general",
+                "timeframe": "day"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "thời tiết",
+                "topic": "general",
+                "timeframe": "day"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "thời tiết",
+                "topic": "general",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Thời tiết – dự báo thời tiết hôm nay và ngày mai - Tuổi Trẻ Online",
+                    "url": "https://tuoitre.vn/thoi-tiet.htm",
+                    "source": "tuoitre.vn",
+                    "summary": "Thời tiết\n\nThời tiết ngày và đêm 31-10, cả nước mưa dông chiếm ưu thế, chỉ vài nơi thời tiết ổn định có nắng. Trong mưa dông có khả năng xảy ra lốc, sét, mưa đá và gió giật mạnh.\n\nThông tin của bạn\n\n \n\nEmail\n\nVui lòng nhập Email\n\nEmail Không đúng định dạng\n\nHọ và tên\n\nVui lòng nhập Họ & Tên.\n\nThông báo\n\n \n\nBạn vui lòng đợi 0s để tiếp tục comment\n\nThông báo\n\n \n\nBình luận được gửi thành công\n\n Bình luận\n Đăng nhập\n Tạo tài khoản [...] Thời tiết\n\nDự báo khoảng từ đêm 5-11 đến cuối tuần này, miền Bắc khả năng đón hai đợt không khí lạnh liên tiếp gy mưa rào và dông rải rác, có nơi mưa to. Từ đầu tuần sau, miền Bắc chuyển lạnh, vùng núi trời rét.\n\nChưa vào mùa khô mưa đã hụt, lượng mưa tháng 11 năm nay ở miền Nam ra sao? \n\n### Chưa vào mùa khô mưa đã hụt, lượng mưa tháng 11 năm nay ở miền Nam ra sao?\n\nThời tiết [...] Thời tiết\n\nMùa mưa chỉ mới chớm kết thúc nhưng mưa ở Nam Bộ đã hụt so với trung bình nhiều năm, nhiệt độ lại tăng cao, vừa vào mùa khô đã có ngày nắng nóng 36 độ C.\n\nVĩnh Long dành hơn 10.000 tỉ đồng để ứng phó với El Nino sắp tới \n\n### Vĩnh Long dành hơn 10.000 tỉ đồng để ứng phó với El Nino sắp tới\n\nThời tiết",
+                    "score": 0.39264008
+                  },
+                  {
+                    "title": "Dự báo thời tiết 10/11/2026: Không khí lạnh mạnh, miền Bắc rét",
+                    "url": "https://vietnamnet.vn/du-bao-thoi-tiet-10-11-2026-khong-khi-lanh-manh-mien-bac-ret-2572328.html",
+                    "source": "vietnamnet.vn",
+                    "summary": "Không khí lạnh tràn về Hà Nội, người dn đi làm đầu tuần trong mưa gió\n\nSáng 9/11, không khí lạnh ảnh hưởng đến TP Hà Nội, trời có mưa đúng thời điểm giờ cao điểm buổi sáng khiến việc đi lại của người dn gặp nhiều khó khăn.\n\nThời tiết Nam Bộ 10 ngày tới: Nắng nóng đầu tuần, giữa tuần mưa giông liên tiếp\n\nThời tiết Nam Bộ những ngày đầu tuần nắng nóng, nhiệt độ cao nhất có nơi vượt 35 độ. Từ giữa tuần, mưa giông gia tăng trên diện rộng, người dn cần đề phòng lốc, sét và gió giật mạnh. [...] Từ tối 9/11 đến ngày 11/11, khu vực TP Huế, TP Đà Nẵng và phía Đông các tỉnh Quảng Ngãi đến Gia Lai có mưa to đến rất to và giông với lượng mưa 150-300mm, cục bộ có nơi trên 500mm; khu vực phía Nam tỉnh Quảng Trị, phía Đông tỉnh Đắk Lắk có mưa to và giông với lượng mưa 90-180mm, cục bộ có nơi mưa rất to trên 300mm; tỉnh Khánh Hòa có mưa vừa, mưa to và giông với lượng mưa 60-120mm, có nơi trên 150mm.\n\nCảnh báo nguy cơ mưa có cường độ lớn (>100mm/3h). [...] Sau đó, đêm 11/11, khu vực TP Huế, TP Đà Nẵng và phía Đông các tỉnh từ Quảng Ngãi đến Đắk Lắk có mưa to với lượng mưa phổ biến 30-60mm, cục bộ có nơi mưa rất to trên 100mm. Từ ngày 12/11, mưa lớn trên khu vực Trung Bộ giảm dần.\n\nCơ quan khí tượng nhận định, từ ngày 12/11, mưa lớn trên khu vực Trung Bộ giảm dần.",
+                    "score": 0.34840176
+                  },
+                  {
+                    "title": "Dự báo thời tiết hôm nay của 63 tỉnh - thành phố ở Việt Nam",
+                    "url": "https://thoitiet.vn/hom-nay",
+                    "source": "thoitiet.vn",
+                    "summary": "Thành phố của bạn:   Hà Nội   Thay đổi\n\nGiờ địa phương:  13:35 | 07/11/2026\n\n# Dự báo thời tiết hôm nay các Tỉnh/Thành phố\n\nMưa nhẹ\n\n###### Hà Nội\n\nMưa nhẹ\n\n### 29.7°C\n\n cảm thấy như  34.1°C Nhiều my\n\n###### Hà Giang\n\nNhiều my\n\n### 25.5°C\n\n cảm thấy như  25.7°C Nhiều my\n\n###### Cao Bằng\n\nNhiều my\n\n### 27.2°C\n\n cảm thấy như  29.8°C Mưa vừa\n\n###### Bắc Kạn\n\nMưa vừa\n\n### 25.8°C\n\n cảm thấy như  26.2°C Mưa nhẹ\n\n###### Tuyên Quang\n\nMưa nhẹ\n\n### 26.5°C\n\n cảm thấy như  26.1°C Nhiều my\n\n###### Lào Cai [...] ###### Nghệ An\n\nMy cụm\n\n### 29°C\n\n cảm thấy như  33.4°C Mưa nhẹ\n\n###### Hà Tĩnh\n\nMưa nhẹ\n\n### 29.1°C\n\n cảm thấy như  33.3°C Nhiều my\n\n###### Quảng Bình\n\nNhiều my\n\n### 29.5°C\n\n cảm thấy như  32.8°C My cụm\n\n###### Quảng Trị\n\nMy cụm\n\n### 31.8°C\n\n cảm thấy như  37.7°C My cụm\n\n###### Thừa Thiên Huế\n\nMy cụm\n\n### 33.5°C\n\n cảm thấy như  40.3°C My cụm\n\n###### Đà Nẵng\n\nMy cụm\n\n### 30.2°C\n\n cảm thấy như  31.9°C My cụm\n\n###### Quảng Nam\n\nMy cụm\n\n### 30.1°C\n\n cảm thấy như  32.2°C My cụm\n\n###### Quảng Ngãi [...] ###### Vĩnh Long\n\nMy cụm\n\n### 33°C\n\n cảm thấy như  39.4°C My cụm\n\n###### Đồng Tháp\n\nMy cụm\n\n### 32.9°C\n\n cảm thấy như  39.1°C My cụm\n\n###### An Giang\n\nMy cụm\n\n### 33.7°C\n\n cảm thấy như  38.9°C Mưa nhẹ\n\n###### Kiên Giang\n\nMưa nhẹ\n\n### 32.4°C\n\n cảm thấy như  37.4°C My cụm\n\n###### Cần Thơ\n\nMy cụm\n\n### 32.9°C\n\n cảm thấy như  39.1°C Nhiều my\n\n###### Hậu Giang\n\nNhiều my\n\n### 32.7°C\n\n cảm thấy như  39°C My rải rác\n\n###### Sóc Trăng\n\nMy rải rác\n\n### 32.8°C\n\n cảm thấy như  38.3°C Mưa nhẹ",
+                    "score": 0.2862595
+                  },
+                  {
+                    "title": "Thời tiết Đài Loan 2026: Nên đi tháng mấy đẹp nhất? | Trip.com",
+                    "url": "https://vn.trip.com/guide/info/th%E1%BB%9Di-ti%E1%BA%BFt-%C4%91%C3%A0i-loan.html",
+                    "source": "vn.trip.com",
+                    "summary": "| Tháng 5 | 22–30°C | 23–31°C | Nóng ẩm, bước vào mùa mưa |\n| Tháng 6 | 25–33°C | 26–32°C | Nóng, ẩm, mưa nhiều, bắt đầu cần lưu ý bão |\n| Tháng 7 | 26–35°C | 26–32°C | Nóng nhất trong ngày, thường có mưa dông buổi chiều |\n| Tháng 8 | 26–34°C | 26–32°C | Nóng ẩm, mưa nhiều và có khả năng ảnh hưởng bởi bão |\n| Tháng 9 | 23–31°C | 24–31°C | Miền Bắc bắt đầu dịu hơn, trong khi miền Nam vẫn nóng |\n| Tháng 10 | 22–28°C | 23–29°C | Mát mẻ, dễ chịu, thích hợp tham quan | [...] |  |  |  |  |\n ---  --- |\n| Tháng | Nhiệt độ trung bình ở miền Bắc | Nhiệt độ trung bình ở miền Nam | Đặc điểm thời tiết |\n| Tháng 1 | 13–19°C | 16–24°C | Miền Bắc lạnh, nhiều my, trong khi miền Nam ấm và khô hơn |\n| Tháng 2 | 14–20°C | 17–24°C | Miền Bắc ẩm và có mưa, trong khi miền Nam tương đối ấm |\n| Tháng 3 | 14–21°C | 19–27°C | Thời tiết bắt đầu ấm lên, có mưa xun |\n| Tháng 4 | 16–23°C | 22–29°C | Ấm áp, mưa có xu hướng tăng về cuối tháng | [...] | Tháng 11 | 17–24°C | 21–27°C | Nhiệt độ giảm dần, lượng mưa tương đối thấp |\n| Tháng 12 | 14–21°C | 17–25°C | Miền Bắc mát lạnh, trong khi miền Nam vẫn tương đối ấm |",
+                    "score": 0.2741004
+                  },
+                  {
+                    "title": "Dự báo thời tiết đêm nay, ngày mai - 10/11/2026: Nền nhiệt tiếp tục giảm sâu - Báo và Phát thanh, Truyền hình Nghệ An",
+                    "url": "https://truyenhinhnghean.vn/media/chuyen-muc/ban-tin-thoi-tiet/202611/du-bao-thoi-tiet-dem-nay-ngay-mai-10112026-nen-nhiet-tiep-tuc-giam-sau-21b43db",
+                    "source": "truyenhinhnghean.vn",
+                    "summary": "Dự báo thời tiết đêm nay, ngày mai - 09/11/2026  Dự báo thời tiết đêm nay, ngày mai - 09/11/2026\n Dự báo thời tiết đêm nay, ngày mai - 08/11/2026: Không khí lạnh mạnh, nhiều nơi mưa to  Dự báo thời tiết đêm nay, ngày mai - 08/11/2026: Không khí lạnh mạnh, nhiều nơi mưa to\n Dự báo thời tiết đêm nay, ngày mai - 07/11/2026: Sắp đón không khí lạnh mạnh kèm mưa  Dự báo thời tiết đêm nay, ngày mai - 07/11/2026: Sắp đón không khí lạnh mạnh kèm mưa [...] Dự báo thời tiết đêm nay, ngày mai 29/10/2026: Mưa giảm dần. Đề phòng sạt lở đất\n  \n\n  Dự báo thời tiết đêm nay, ngày mai - 28/10/2026\n  \n\n  Dự báo thời tiết đêm nay, ngày mai - 27/10/2026\n  \n\n  Dự báo thời tiết đêm nay, ngày mai 26/10/2026: Nắng gián đoạn\n  \n\n  Dự báo thời tiết đêm nay, ngày mai 25/10/2026: Ngày nắng mạnh. Tối có mưa cục bộ [...] Video Nóng nhất\n\n Nghệ An ngày mới - 09/11/2026  Nghệ An ngày mới - 09/11/2026\n Today's News - 08/11/2026:  Israeli President Tasks Yashar Party Leader with Forming New Government  Today's News - 08/11/2026: Israeli President Tasks Yashar Party Leader with Forming New Government\n Thời sự Báo và Phát thanh, Truyền hình Nghệ An tối - 08/11/2026  Thời sự Báo và Phát thanh, Truyền hình Nghệ An tối - 08/11/2026\n\nCác kênh video",
+                    "score": 0.272562
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Dưới đây là dự báo thời tiết hôm nay:\n\n1. **Thời tiết chung**: Cả nước có mưa dông chiếm ưu thế, chỉ một số nơi có thời tiết ổn định với nắng. Trong mưa dông có khả năng xảy ra lốc, sét, mưa đá và gió giật mạnh. (Nguồn: [Tuổi Trẻ Online](https://tuoitre.vn/thoi-tiet.htm))\n\n2. **Hà Nội**: Mưa nhẹ, nhiệt độ khoảng 29.7°C, cảm giác như 34.1°C. (Nguồn: [Thời tiết](https://thoitiet.vn/hom-nay))\n\n3. **Miền Bắc**: Dự báo sẽ đón hai đợt không khí lạnh liên tiếp từ đêm 5-11 đến cuối tuần này, có khả năng mưa rào và dông rải rác. (Nguồn: [Tuổi Trẻ Online](https://tuoitre.vn/thoi-tiet.htm))\n\n4. **Miền Nam**: Nắng nóng đầu tuần, nhiệt độ có thể vượt 35 độ, nhưng giữa tuần sẽ có mưa giông gia tăng. (Nguồn: [Vietnamnet](https://vietnamnet.vn/du-bao-thoi-tiet-10-11-2026-khong-khi-lanh-manh-mien-bac-ret-2572328.html))\n\nNếu bạn cần thêm thông tin chi tiết về một khu vực cụ thể, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "thời tiết",
+            "topic": "general",
+            "timeframe": "day"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "thời tiết",
+            "topic": "general",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Thời tiết – dự báo thời tiết hôm nay và ngày mai - Tuổi Trẻ Online",
+                "url": "https://tuoitre.vn/thoi-tiet.htm",
+                "source": "tuoitre.vn",
+                "summary": "Thời tiết\n\nThời tiết ngày và đêm 31-10, cả nước mưa dông chiếm ưu thế, chỉ vài nơi thời tiết ổn định có nắng. Trong mưa dông có khả năng xảy ra lốc, sét, mưa đá và gió giật mạnh.\n\nThông tin của bạn\n\n \n\nEmail\n\nVui lòng nhập Email\n\nEmail Không đúng định dạng\n\nHọ và tên\n\nVui lòng nhập Họ & Tên.\n\nThông báo\n\n \n\nBạn vui lòng đợi 0s để tiếp tục comment\n\nThông báo\n\n \n\nBình luận được gửi thành công\n\n Bình luận\n Đăng nhập\n Tạo tài khoản [...] Thời tiết\n\nDự báo khoảng từ đêm 5-11 đến cuối tuần này, miền Bắc khả năng đón hai đợt không khí lạnh liên tiếp gy mưa rào và dông rải rác, có nơi mưa to. Từ đầu tuần sau, miền Bắc chuyển lạnh, vùng núi trời rét.\n\nChưa vào mùa khô mưa đã hụt, lượng mưa tháng 11 năm nay ở miền Nam ra sao? \n\n### Chưa vào mùa khô mưa đã hụt, lượng mưa tháng 11 năm nay ở miền Nam ra sao?\n\nThời tiết [...] Thời tiết\n\nMùa mưa chỉ mới chớm kết thúc nhưng mưa ở Nam Bộ đã hụt so với trung bình nhiều năm, nhiệt độ lại tăng cao, vừa vào mùa khô đã có ngày nắng nóng 36 độ C.\n\nVĩnh Long dành hơn 10.000 tỉ đồng để ứng phó với El Nino sắp tới \n\n### Vĩnh Long dành hơn 10.000 tỉ đồng để ứng phó với El Nino sắp tới\n\nThời tiết",
+                "score": 0.39264008
+              },
+              {
+                "title": "Dự báo thời tiết 10/11/2026: Không khí lạnh mạnh, miền Bắc rét",
+                "url": "https://vietnamnet.vn/du-bao-thoi-tiet-10-11-2026-khong-khi-lanh-manh-mien-bac-ret-2572328.html",
+                "source": "vietnamnet.vn",
+                "summary": "Không khí lạnh tràn về Hà Nội, người dn đi làm đầu tuần trong mưa gió\n\nSáng 9/11, không khí lạnh ảnh hưởng đến TP Hà Nội, trời có mưa đúng thời điểm giờ cao điểm buổi sáng khiến việc đi lại của người dn gặp nhiều khó khăn.\n\nThời tiết Nam Bộ 10 ngày tới: Nắng nóng đầu tuần, giữa tuần mưa giông liên tiếp\n\nThời tiết Nam Bộ những ngày đầu tuần nắng nóng, nhiệt độ cao nhất có nơi vượt 35 độ. Từ giữa tuần, mưa giông gia tăng trên diện rộng, người dn cần đề phòng lốc, sét và gió giật mạnh. [...] Từ tối 9/11 đến ngày 11/11, khu vực TP Huế, TP Đà Nẵng và phía Đông các tỉnh Quảng Ngãi đến Gia Lai có mưa to đến rất to và giông với lượng mưa 150-300mm, cục bộ có nơi trên 500mm; khu vực phía Nam tỉnh Quảng Trị, phía Đông tỉnh Đắk Lắk có mưa to và giông với lượng mưa 90-180mm, cục bộ có nơi mưa rất to trên 300mm; tỉnh Khánh Hòa có mưa vừa, mưa to và giông với lượng mưa 60-120mm, có nơi trên 150mm.\n\nCảnh báo nguy cơ mưa có cường độ lớn (>100mm/3h). [...] Sau đó, đêm 11/11, khu vực TP Huế, TP Đà Nẵng và phía Đông các tỉnh từ Quảng Ngãi đến Đắk Lắk có mưa to với lượng mưa phổ biến 30-60mm, cục bộ có nơi mưa rất to trên 100mm. Từ ngày 12/11, mưa lớn trên khu vực Trung Bộ giảm dần.\n\nCơ quan khí tượng nhận định, từ ngày 12/11, mưa lớn trên khu vực Trung Bộ giảm dần.",
+                "score": 0.34840176
+              },
+              {
+                "title": "Dự báo thời tiết hôm nay của 63 tỉnh - thành phố ở Việt Nam",
+                "url": "https://thoitiet.vn/hom-nay",
+                "source": "thoitiet.vn",
+                "summary": "Thành phố của bạn:   Hà Nội   Thay đổi\n\nGiờ địa phương:  13:35 | 07/11/2026\n\n# Dự báo thời tiết hôm nay các Tỉnh/Thành phố\n\nMưa nhẹ\n\n###### Hà Nội\n\nMưa nhẹ\n\n### 29.7°C\n\n cảm thấy như  34.1°C Nhiều my\n\n###### Hà Giang\n\nNhiều my\n\n### 25.5°C\n\n cảm thấy như  25.7°C Nhiều my\n\n###### Cao Bằng\n\nNhiều my\n\n### 27.2°C\n\n cảm thấy như  29.8°C Mưa vừa\n\n###### Bắc Kạn\n\nMưa vừa\n\n### 25.8°C\n\n cảm thấy như  26.2°C Mưa nhẹ\n\n###### Tuyên Quang\n\nMưa nhẹ\n\n### 26.5°C\n\n cảm thấy như  26.1°C Nhiều my\n\n###### Lào Cai [...] ###### Nghệ An\n\nMy cụm\n\n### 29°C\n\n cảm thấy như  33.4°C Mưa nhẹ\n\n###### Hà Tĩnh\n\nMưa nhẹ\n\n### 29.1°C\n\n cảm thấy như  33.3°C Nhiều my\n\n###### Quảng Bình\n\nNhiều my\n\n### 29.5°C\n\n cảm thấy như  32.8°C My cụm\n\n###### Quảng Trị\n\nMy cụm\n\n### 31.8°C\n\n cảm thấy như  37.7°C My cụm\n\n###### Thừa Thiên Huế\n\nMy cụm\n\n### 33.5°C\n\n cảm thấy như  40.3°C My cụm\n\n###### Đà Nẵng\n\nMy cụm\n\n### 30.2°C\n\n cảm thấy như  31.9°C My cụm\n\n###### Quảng Nam\n\nMy cụm\n\n### 30.1°C\n\n cảm thấy như  32.2°C My cụm\n\n###### Quảng Ngãi [...] ###### Vĩnh Long\n\nMy cụm\n\n### 33°C\n\n cảm thấy như  39.4°C My cụm\n\n###### Đồng Tháp\n\nMy cụm\n\n### 32.9°C\n\n cảm thấy như  39.1°C My cụm\n\n###### An Giang\n\nMy cụm\n\n### 33.7°C\n\n cảm thấy như  38.9°C Mưa nhẹ\n\n###### Kiên Giang\n\nMưa nhẹ\n\n### 32.4°C\n\n cảm thấy như  37.4°C My cụm\n\n###### Cần Thơ\n\nMy cụm\n\n### 32.9°C\n\n cảm thấy như  39.1°C Nhiều my\n\n###### Hậu Giang\n\nNhiều my\n\n### 32.7°C\n\n cảm thấy như  39°C My rải rác\n\n###### Sóc Trăng\n\nMy rải rác\n\n### 32.8°C\n\n cảm thấy như  38.3°C Mưa nhẹ",
+                "score": 0.2862595
+              },
+              {
+                "title": "Thời tiết Đài Loan 2026: Nên đi tháng mấy đẹp nhất? | Trip.com",
+                "url": "https://vn.trip.com/guide/info/th%E1%BB%9Di-ti%E1%BA%BFt-%C4%91%C3%A0i-loan.html",
+                "source": "vn.trip.com",
+                "summary": "| Tháng 5 | 22–30°C | 23–31°C | Nóng ẩm, bước vào mùa mưa |\n| Tháng 6 | 25–33°C | 26–32°C | Nóng, ẩm, mưa nhiều, bắt đầu cần lưu ý bão |\n| Tháng 7 | 26–35°C | 26–32°C | Nóng nhất trong ngày, thường có mưa dông buổi chiều |\n| Tháng 8 | 26–34°C | 26–32°C | Nóng ẩm, mưa nhiều và có khả năng ảnh hưởng bởi bão |\n| Tháng 9 | 23–31°C | 24–31°C | Miền Bắc bắt đầu dịu hơn, trong khi miền Nam vẫn nóng |\n| Tháng 10 | 22–28°C | 23–29°C | Mát mẻ, dễ chịu, thích hợp tham quan | [...] |  |  |  |  |\n ---  --- |\n| Tháng | Nhiệt độ trung bình ở miền Bắc | Nhiệt độ trung bình ở miền Nam | Đặc điểm thời tiết |\n| Tháng 1 | 13–19°C | 16–24°C | Miền Bắc lạnh, nhiều my, trong khi miền Nam ấm và khô hơn |\n| Tháng 2 | 14–20°C | 17–24°C | Miền Bắc ẩm và có mưa, trong khi miền Nam tương đối ấm |\n| Tháng 3 | 14–21°C | 19–27°C | Thời tiết bắt đầu ấm lên, có mưa xun |\n| Tháng 4 | 16–23°C | 22–29°C | Ấm áp, mưa có xu hướng tăng về cuối tháng | [...] | Tháng 11 | 17–24°C | 21–27°C | Nhiệt độ giảm dần, lượng mưa tương đối thấp |\n| Tháng 12 | 14–21°C | 17–25°C | Miền Bắc mát lạnh, trong khi miền Nam vẫn tương đối ấm |",
+                "score": 0.2741004
+              },
+              {
+                "title": "Dự báo thời tiết đêm nay, ngày mai - 10/11/2026: Nền nhiệt tiếp tục giảm sâu - Báo và Phát thanh, Truyền hình Nghệ An",
+                "url": "https://truyenhinhnghean.vn/media/chuyen-muc/ban-tin-thoi-tiet/202611/du-bao-thoi-tiet-dem-nay-ngay-mai-10112026-nen-nhiet-tiep-tuc-giam-sau-21b43db",
+                "source": "truyenhinhnghean.vn",
+                "summary": "Dự báo thời tiết đêm nay, ngày mai - 09/11/2026  Dự báo thời tiết đêm nay, ngày mai - 09/11/2026\n Dự báo thời tiết đêm nay, ngày mai - 08/11/2026: Không khí lạnh mạnh, nhiều nơi mưa to  Dự báo thời tiết đêm nay, ngày mai - 08/11/2026: Không khí lạnh mạnh, nhiều nơi mưa to\n Dự báo thời tiết đêm nay, ngày mai - 07/11/2026: Sắp đón không khí lạnh mạnh kèm mưa  Dự báo thời tiết đêm nay, ngày mai - 07/11/2026: Sắp đón không khí lạnh mạnh kèm mưa [...] Dự báo thời tiết đêm nay, ngày mai 29/10/2026: Mưa giảm dần. Đề phòng sạt lở đất\n  \n\n  Dự báo thời tiết đêm nay, ngày mai - 28/10/2026\n  \n\n  Dự báo thời tiết đêm nay, ngày mai - 27/10/2026\n  \n\n  Dự báo thời tiết đêm nay, ngày mai 26/10/2026: Nắng gián đoạn\n  \n\n  Dự báo thời tiết đêm nay, ngày mai 25/10/2026: Ngày nắng mạnh. Tối có mưa cục bộ [...] Video Nóng nhất\n\n Nghệ An ngày mới - 09/11/2026  Nghệ An ngày mới - 09/11/2026\n Today's News - 08/11/2026:  Israeli President Tasks Yashar Party Leader with Forming New Government  Today's News - 08/11/2026: Israeli President Tasks Yashar Party Leader with Forming New Government\n Thời sự Báo và Phát thanh, Truyền hình Nghệ An tối - 08/11/2026  Thời sự Báo và Phát thanh, Truyền hình Nghệ An tối - 08/11/2026\n\nCác kênh video",
+                "score": 0.272562
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-11-10T12:05:14"
+}
