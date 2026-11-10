@@ -6,7 +6,7 @@
 
 ## Team
 
-- Team:
+- Team: Rising-Apocalypse
 - Members:
 - Provider/model: openai / gpt-4o-mini
 
@@ -18,7 +18,9 @@
 
 > 1–2 câu mô tả agent dùng để làm gì (cho team khác hiểu nhanh).
 
-Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc URL, tổng hợp thành digest, và gửi lên Telegram khi được xác nhận."
+Research agent tiếng Việt: tìm tin tức web, tweet theo tài khoản hoặc chủ đề, đọc URL, tra Hacker News / GitHub / Wikipedia / paper AI, tổng hợp thành digest, và chỉ đăng lên Telegram sau khi user xác nhận. Thiếu thông tin thì hỏi lại, không đoán; câu ngoài phạm vi (toán, code) thì từ chối, không gọi tool.
+
+Chạy UI: `streamlit run app.py` (trong `starter_v0/`).
 
 **Link dùng thử (deploy):**
 
@@ -32,17 +34,28 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 | Tên tool | Làm được gì | Tool mới nhóm thêm? |
 |---|---|---|
-| clarify | hỏi lại người dùng khi thiếu thông tin | không |
-|  |  |  |
-|  |  |  |
+| clarify | hỏi lại user khi thiếu thông tin; xin xác nhận yes/no trước khi gửi | không |
+| timeline | tweet mới nhất của một tài khoản X (tự đổi tên → handle) | không |
+| social_search | tìm tweet theo chủ đề (Latest / Top) | không |
+| lookup | tìm web / tin tức (topic news, timeframe day/week/…) | không |
+| fetch | đọc nội dung một URL | không |
+| format | trình bày kết quả thành digest markdown | không |
+| send | đăng lên Telegram, chỉ khi `confirmed=true` | không |
+| policy / papers / paper_text | tra policy công ty / tìm paper arXiv / đọc full text paper | không |
+| hackernews | story trên Hacker News theo chủ đề (liên quan / mới nhất) | **có** |
+| wikipedia | tóm tắt một bài Wikipedia (en/vi) cho kiến thức nền | **có** |
+| github_repos | tìm repo open-source trên GitHub (stars / updated) | **có** |
+| hf_papers | paper AI trending hôm nay trên Hugging Face | **có** |
 
 ## A3. Câu hỏi mẫu để thử
 
 > 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
 
-1.
-2.
-3.
+1. Tin tức AI hôm nay có gì nổi bật?
+2. Cho mình 3 tweet mới nhất của Andrej Karpathy
+3. Dân dev trên Hacker News đang bàn gì về Rust?
+4. Transformer trong deep learning là gì?
+5. Đăng bản tin này lên Telegram giúp mình (agent phải hỏi xác nhận trước)
 
 ---
 
@@ -102,17 +115,36 @@ Nhận xét:
 
 List the 10 cases added to `data/eval_group.json` (5 single turn + 5 multi turn).
 
-| Case ID | What It Tests | Expected Tool/Behavior | Result |
+Run v7: `runs/v7_B_group_openai_20261110T112602516587.json` (10/10). Lần đầu chạy trên v3: `runs/v3_B_group_openai_20261110T111227772582.json` (10/10).
+
+| Case ID | What It Tests | Expected Tool/Behavior | Result (v7) |
 |---|---|---|---|
-|  |  |  |  |
+| G01_hackernews_routing | dân dev/HN bàn gì → tool mới | `hackernews(query="Rust")` | PASS |
+| G02_wikipedia_concept | "X là gì" → kiến thức nền, không phải tin tức | `wikipedia` | PASS |
+| G03_github_popular_repos | "phổ biến nhất" → sort | `github_repos(sort="stars")` | PASS |
+| G04_hf_trending_papers | paper hot hôm nay, không từ khoá | `hf_papers` | PASS |
+| G05_handle_with_at_sign | handle có "@" phải bỏ "@" | `timeline(screenname="karpathy", limit=3)` | PASS |
+| G06_send_declined (multi) | đã hỏi xác nhận, user từ chối | không gọi tool | PASS |
+| G07_clarify_then_wikipedia (multi) | hỏi lại khái niệm rồi tra | `wikipedia` | PASS |
+| G08_switch_web_to_hackernews (multi) | đổi nguồn, "mới nhất" | `hackernews(query="Rust", sort="date")` | PASS |
+| G09_github_carryover (multi) | giữ chủ đề, đổi sort, đổi limit | `github_repos(sort="updated", limit=3)` | PASS |
+| G10_correction_new_handle (multi) | sửa người, map tên → handle, giữ limit | `timeline(screenname="demishassabis", limit=5)` | PASS |
+
+Nhận xét: bộ group pass 10/10 ngay từ v3, tức là chưa đủ khó. Các lỗi thật được phát hiện nhờ bộ `eval_research_extension.json` (E01, E06, E08).
 
 ## B4. Live Chat Evidence
 
 Use `transcripts/*.transcript.json`.
 
+Transcript: `transcripts/v7_openai_20261110T113554847510.transcript.json` (artifact `v7+pf7b92009b3ed+t1d5f3e291bc6`, chạy bằng `chat.py`).
+
 | Turn | User Request | Tool Calls | Version Evidence | Outcome |
 |---|---|---|---|---|
-|  |  |  |  |  |
+| 1 | Tin tức AI hôm nay có gì nổi bật? | `lookup(query="AI", topic="news", timeframe="day")` | v7 | Đúng: trả tin kèm nguồn |
+| 2 | Tóm tắt 3 tweet mới nhất giúp mình | `social_search(query="AI", limit=3)` | v7 | **Đáng bàn:** không hỏi "của ai" mà lấy chủ đề AI từ lượt 1. Eval single-turn R10 thì pass (hỏi lại); trong chat có history thì model tự suy ra chủ đề |
+| 3 | Của Andrej Karpathy nhé | `timeline(screenname="karpathy", limit=3)` | v7 | Đúng: map tên → handle, giữ limit=3 |
+| 4 | Đăng bản tin AI hôm nay lên Telegram giúp mình | `clarify(response_type="yes_no")` | v7 | Đúng: hỏi xác nhận, không gửi |
+| 5 | Thôi khoan, đừng đăng | (không gọi tool) | v7 | Đúng: không gọi `send` |
 
 ## B5. Bonus Evidence
 
@@ -120,19 +152,22 @@ Only fill if your team did bonus.
 
 | Bonus | Evidence File | What Worked | Risk / Guardrail |
 |---|---|---|---|
-| send (Telegram) |  |  |  |
-| arXiv/company policy |  |  |  |
-| UI |  |  |  |
-| Tool unit tests (`tests/`) | `pytest` output |  |  |
+| send (Telegram) | transcript trên, lượt 4–5 | Agent hỏi `yes_no` trước, user từ chối thì không gửi | Guardrail 2 lớp: prompt + code (`send` không gọi API khi `confirmed=false`; ở v0 nó đã chặn 3 lần gọi sai) |
+| arXiv/company policy | `runs/v7_B_extension_openai_20261110T112625920110.json` (10/10) | Route đúng `policy` + `policy_area`, `papers`, `paper_text` | Nội dung policy là untrusted: dòng giống lệnh bị tách vào `untrusted_text` (có unit test) |
+| UI | `app.py` (Streamlit) | Chat nhiều lượt, xem args/kết quả từng tool, tự lưu transcript | Dùng key API của máy chạy, nên chỉ mở link public khi demo |
+| Tool unit tests (`tests/`) | `pytest`: 130 passed, 0 skipped | Điền 14 stub TODO + test cho 4 tool mới (≥ 3/tool) + regression test | Offline, mock HTTP |
 
 Tool unit tests: số test đã viết, số bug tìm được trong tool có sẵn (nếu có), và một ví dụ lỗi mà unit test bắt được nhưng eval không bắt được.
 
+**Bug tìm được (1):** `timeline` / `social_search` tính `items[: int(limit or 5)]`. Model gửi `limit=-1` thì tool âm thầm bỏ mất item cuối (3 tweet → 2; 1 tweet → 0); `limit="abc"` biến một response tốt thành lỗi `ValueError`. Đã sửa bằng `clamp_int()` trong `tools/_shared.py`; regression test là `test_timeline_bad_limit_from_model_falls_back_to_default` và `test_social_search_negative_limit_does_not_drop_last_item`. Eval không thể bắt lỗi này, vì eval chỉ chấm tên tool + args, không chấm tool trả về bao nhiêu item.
+
 ## B6. Reflection
 
-- Which fixes belonged in `system_prompt.md`?
-- Which fixes belonged in `tools.yaml`?
-- Which failure needed manual review instead of automatic grading?
-- What would you improve next?
+- **Fix thuộc `system_prompt.md`:** hành vi chung: khi nào hỏi lại, xác nhận trước khi gửi, từ chối ngoài phạm vi (v1: 0.65 → 0.90), quy tắc multi-turn (v5), chỉ hỏi khi thiếu thông tin bắt buộc (v7).
+- **Fix thuộc `tools.yaml`:** convention args và ranh giới từng tool: `response_type` bắt buộc, `yes_no` cho send (v2: R11/R12), map câu hỏi → `policy_area` (v6: E01). Khi prompt và description mâu thuẫn thì description thắng: rule routing ở v4 không sửa được E06 (bản tin AI → `hf_papers`); phải thêm rule rất cụ thể ở v5 mới hết.
+- **Bài học về regression:** sửa chỗ này hay hỏng chỗ khác. Thêm tool (v3) làm hỏng E06; rule ví dụ ở v4 chỉ nêu `topic` nên model bỏ `timeframe` (M02); câu "đừng để default" ở v5 làm model hỏi thừa số lượng tweet (R01). Vì vậy mỗi version phải chạy lại cả 3 bộ eval. Model cũng có nhiễu: chạy v4 base 2 lần được 0.95 và 0.90.
+- **Cần xem tay:** R12 ở v1 (user nói "bản tin này" mà không có nội dung; hỏi lại nội dung cũng hợp lý dù eval chấm fail), và lượt 2 trong chat live (tự suy ra chủ đề từ history thay vì hỏi).
+- **Cải thiện tiếp:** viết eval group khó hơn (bộ hiện tại pass 10/10 ngay); chạy mỗi version nhiều lần để đo độ ổn định; thêm case multi-turn có history thật như trong chat.
 
 ## B7. Small Local Model Challenge (bonus)
 
