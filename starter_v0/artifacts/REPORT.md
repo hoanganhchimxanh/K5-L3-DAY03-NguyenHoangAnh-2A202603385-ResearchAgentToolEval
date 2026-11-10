@@ -175,21 +175,9 @@ Only fill if your team did the local model challenge.
 
 | Version | Model (provider) | Prompt/Tools | case_accuracy | tool_routing | argument | multiturn | Run File |
 |---|---|---|---|---|---|---|---|
-| v3 | (cloud) | v3 | tools.yaml | Thêm 4 tool mới (hackernews, wikipedia, github_repos, hf_papers); base giữ 1.00, group 1.00, nhưng extension E06 regression (bản tin AI → hf_papers) | 1.00 | 1.00 | `runs/v3_B_base_openai_20261110T111145279017.json` |
-| v4 | system_prompt.md | Thêm routing rules → không sửa được E06, còn gây M02/M06 regression | 1.00 | 0.90 | `runs/v4_B_base_openai_20261110T111927623244.json` |
-| v5 | system_prompt.md | Rule lookup nêu cả timeframe + rule multi-turn → sửa M02/M06/E06/E08, nhưng R01 hỏi thừa | 0.90 | 0.95 | `runs/v5_B_base_openai_20261110T112057602802.json` |
-| v6 | tools.yaml | Mô tả map câu hỏi → policy_area → sửa E01 (extension 1.00) | 0.95 | 0.95 | `runs/v6_B_base_openai_20261110T112307584606.json` |
-| v7 | system_prompt.md | Chỉ clarify khi thiếu thông tin bắt buộc → sửa R01; base/group/extension đều 1.00 | 0.95 | 1.00 | `runs/v7_B_base_openai_20261110T112540805267.json` |
-| v3-... | (ollama) | v3 | tools.yaml | Thêm 4 tool mới (hackernews, wikipedia, github_repos, hf_papers); base giữ 1.00, group 1.00, nhưng extension E06 regression (bản tin AI → hf_papers) | 1.00 | 1.00 | `runs/v3_B_base_openai_20261110T111145279017.json` |
-| v4 | system_prompt.md | Thêm routing rules → không sửa được E06, còn gây M02/M06 regression | 1.00 | 0.90 | `runs/v4_B_base_openai_20261110T111927623244.json` |
-| v5 | system_prompt.md | Rule lookup nêu cả timeframe + rule multi-turn → sửa M02/M06/E06/E08, nhưng R01 hỏi thừa | 0.90 | 0.95 | `runs/v5_B_base_openai_20261110T112057602802.json` |
-| v6 | tools.yaml | Mô tả map câu hỏi → policy_area → sửa E01 (extension 1.00) | 0.95 | 0.95 | `runs/v6_B_base_openai_20261110T112307584606.json` |
-| v7 | system_prompt.md | Chỉ clarify khi thiếu thông tin bắt buộc → sửa R01; base/group/extension đều 1.00 | 0.95 | 1.00 | `runs/v7_B_base_openai_20261110T112540805267.json` |
-| v3-... | (ollama) | v3 | tools.yaml | Thêm 4 tool mới (hackernews, wikipedia, github_repos, hf_papers); base giữ 1.00, group 1.00, nhưng extension E06 regression (bản tin AI → hf_papers) | 1.00 | 1.00 | `runs/v3_B_base_openai_20261110T111145279017.json` |
-| v4 | system_prompt.md | Thêm routing rules → không sửa được E06, còn gây M02/M06 regression | 1.00 | 0.90 | `runs/v4_B_base_openai_20261110T111927623244.json` |
-| v5 | system_prompt.md | Rule lookup nêu cả timeframe + rule multi-turn → sửa M02/M06/E06/E08, nhưng R01 hỏi thừa | 0.90 | 0.95 | `runs/v5_B_base_openai_20261110T112057602802.json` |
-| v6 | tools.yaml | Mô tả map câu hỏi → policy_area → sửa E01 (extension 1.00) | 0.95 | 0.95 | `runs/v6_B_base_openai_20261110T112307584606.json` |
-| v7 | system_prompt.md | Chỉ clarify khi thiếu thông tin bắt buộc → sửa R01; base/group/extension đều 1.00 | 0.95 | 1.00 | `runs/v7_B_base_openai_20261110T112540805267.json` |
+| v3 | (cloud) | v3 |  |  |  |  |  |
+| v3-... | (ollama) | v3 |  |  |  |  |  |
+| v3-... | (ollama) | v3 |  |  |  |  |  |
 | v4-local |  |  |  |  |  |  |  |
 | v5-local |  |  |  |  |  |  |  |
 
