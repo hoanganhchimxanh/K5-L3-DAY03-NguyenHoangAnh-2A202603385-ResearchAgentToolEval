@@ -26,7 +26,7 @@ Chạy UI: `streamlit run app.py` (trong `starter_v0/`).
 
 > Dán link public để team khác mở thử ngay. Cách deploy nhanh bằng Cloudflare Tunnel xem README. Nếu deploy Vercel/Streamlit Cloud thì dán link đó.
 >
-> URL: 
+> URL: https://phi-notify-documentation-grows.trycloudflare.com
 
 ## A2. Tool agent có
 

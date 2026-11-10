@@ -69,7 +69,7 @@ Bonus:
 - [x] `pytest`: 0 failed, 0 skipped
 
 **Demo & report**
-- [ ] UI chạy được + link dùng thử
+- [x] UI chạy được + link dùng thử
 - [x] `chat.py`: ≥ 3 lượt live, có transcript
 - [x] `artifacts/REPORT.md` Phần A trước 16:30, Phần B trước khi nộp
 
