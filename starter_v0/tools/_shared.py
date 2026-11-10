@@ -11,6 +11,21 @@ ROOT = Path(__file__).resolve().parents[1]
 TIMEOUT = 30
 
 
+def clamp_int(value: Any, default: int, *, lo: int = 1, hi: int = 50) -> int:
+    """Coerce a model-provided count into [lo, hi].
+
+    Models send odd values: "5", 0, -1, None, "abc". Anything that is not a positive
+    integer falls back to `default`; values above `hi` are capped.
+    """
+    try:
+        number = int(value)
+    except (TypeError, ValueError):
+        return default
+    if number < lo:
+        return default
+    return min(number, hi)
+
+
 def err(tool: str, exc: Exception) -> dict[str, Any]:
     return {"tool": tool, "error": type(exc).__name__, "message": str(exc)}
 

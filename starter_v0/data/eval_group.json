@@ -2,6 +2,283 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_hackernews_routing",
+      "phase": "B",
+      "suite": "group",
+      "query": "Dân dev trên Hacker News đang bàn gì về Rust?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hackernews",
+            "args": {
+              "query": "Rust"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_new_tool_hackernews",
+        "difficulty": "medium",
+        "what_it_tests": "Dân dev / Hacker News bàn gì → tool mới hackernews (không phải lookup hay social_search); query chỉ là chủ đề."
+      }
+    },
+    {
+      "id": "G02_wikipedia_concept",
+      "phase": "B",
+      "suite": "group",
+      "query": "Transformer trong deep learning là gì? Giải thích ngắn gọn giúp mình.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wikipedia",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_new_tool_wikipedia",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi khái niệm nền ổn định ('X là gì') → wikipedia, không phải lookup (tin tức)."
+      }
+    },
+    {
+      "id": "G03_github_popular_repos",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm giúp mình các repo open-source phổ biến nhất về LLM agent trên GitHub.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "sort": "stars"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_args_github",
+        "difficulty": "medium",
+        "what_it_tests": "Repo open-source 'phổ biến nhất' → github_repos với sort=stars."
+      }
+    },
+    {
+      "id": "G04_hf_trending_papers",
+      "phase": "B",
+      "suite": "group",
+      "query": "Hôm nay trên Hugging Face có paper AI nào đang hot?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hf_papers",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_new_tool_hf_papers",
+        "difficulty": "medium",
+        "what_it_tests": "Paper AI 'hot hôm nay' không kèm từ khoá → hf_papers (daily trending), không phải papers (arXiv search)."
+      }
+    },
+    {
+      "id": "G05_handle_with_at_sign",
+      "phase": "B",
+      "suite": "group",
+      "query": "Cho mình 3 tweet mới nhất của @karpathy",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "karpathy",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_handle_strip_at",
+        "difficulty": "medium",
+        "what_it_tests": "User viết handle có '@' → screenname bỏ '@'; trích limit=3."
+      }
+    },
+    {
+      "id": "G06_send_declined",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Đăng bản tin AI hôm nay lên Telegram giúp mình"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn xác nhận muốn đăng bản tin 'AI hôm nay' lên kênh Telegram không?"
+        },
+        {
+          "role": "user",
+          "content": "Thôi khoan, đừng đăng nữa"
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "no_tool": true,
+        "behavior": "acknowledge_without_sending"
+      },
+      "metadata": {
+        "skill": "multiturn_send_declined",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: agent đã hỏi xác nhận gửi Telegram, user từ chối → KHÔNG gọi send (và không gọi tool nào)."
+      }
+    },
+    {
+      "id": "G07_clarify_then_wikipedia",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Giải thích khái niệm này giúp mình"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn muốn mình giải thích khái niệm nào?"
+        },
+        {
+          "role": "user",
+          "content": "RLHF ấy, reinforcement learning from human feedback"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wikipedia",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_clarify_wikipedia",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: lượt 1 thiếu khái niệm → agent hỏi; lượt 3 user nói RLHF → wikipedia."
+      }
+    },
+    {
+      "id": "G08_switch_web_to_hackernews",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tin tức về Rust tuần này có gì?"
+        },
+        {
+          "role": "user",
+          "content": "Thôi, mình muốn xem dân dev trên Hacker News bàn gì về Rust, lấy bài mới nhất"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hackernews",
+            "args": {
+              "query": "Rust",
+              "sort": "date"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_switch_tool_hackernews",
+        "difficulty": "hard",
+        "what_it_tests": "2 turns: từ tin web chuyển sang Hacker News, giữ chủ đề Rust, 'mới nhất' → sort=date."
+      }
+    },
+    {
+      "id": "G09_github_carryover",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm repo GitHub về RAG"
+        },
+        {
+          "role": "user",
+          "content": "Sắp xếp theo repo mới cập nhật gần đây nhé"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ cần 3 repo thôi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "sort": "updated",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_carryover_github",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: giữ chủ đề RAG, đổi sort → updated, rồi limit=3."
+      }
+    },
+    {
+      "id": "G10_correction_new_handle",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lấy 5 tweet mới nhất của Yann LeCun"
+        },
+        {
+          "role": "user",
+          "content": "À nhầm, của Demis Hassabis"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "demishassabis",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_correction_handle",
+        "difficulty": "hard",
+        "what_it_tests": "2 turns: sửa người (Yann LeCun → Demis Hassabis), map tên → handle demishassabis, giữ limit=5."
+      }
+    }
+  ]
 }
